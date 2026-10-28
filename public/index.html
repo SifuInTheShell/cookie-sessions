@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#211611">
+  <meta name="description" content="A live cookie-themed song voting night for your community.">
+  <title>Cookie Sessions — Playback Night</title>
+  <style>
+:root{color-scheme:dark;--bg:#211611;--panel:#2e2019;--panel2:#39271f;--border:#664334;--cream:#fff3df;--muted:#bfab96;--gold:#f6b961;--bright:#ffc97c;--berry:#ff8b6a;--display:Georgia,'Times New Roman',serif;--body:'Trebuchet MS',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--body);font-size:14px;line-height:1.5;min-width:320px}body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(#c48757 0.65px,transparent .65px);background-size:28px 28px;opacity:.10}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.44}a{color:inherit}p{margin:0;color:var(--muted)}h1,h2,h3{margin:0;line-height:1.1}h1,h2{font-family:var(--display);font-weight:500}h1 em,h2 em{color:var(--gold);font-weight:500}h3{font-size:19px}em{font-style:italic}input,textarea{color:var(--cream);background:#211711;border:1px solid #76513d;border-radius:10px;outline:none;padding:12px 13px;width:100%;transition:border-color .2s}input::placeholder,textarea::placeholder{color:#927d6f}input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px #ffc8792c}textarea{resize:vertical}input[type=range]{box-shadow:none}.app-wrap{max-width:1320px;margin:auto;padding:0 32px;position:relative}.ambient{position:fixed;pointer-events:none;border-radius:100%;filter:blur(100px);opacity:.18;z-index:-1}.ambient-one{background:#a34c19;width:430px;height:430px;top:2%;left:-160px}.ambient-two{background:#7c3428;width:420px;height:420px;right:-210px;bottom:5%}.site-header{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:29px 0 27px}.brand{display:flex;align-items:center;gap:14px}.brand-cookie{position:relative;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 40% 32%,#ffe0a2,#de9a51 70%,#ae6135);display:block;box-shadow:inset -3px -4px 0 #ba743c,0 3px 16px #0d0604}.brand-cookie i{position:absolute;background:#68381f;border-radius:60%;width:9px;height:7px}.brand-cookie i:nth-child(1){top:8px;left:10px;transform:rotate(18deg)}.brand-cookie i:nth-child(2){top:13px;right:7px}.brand-cookie i:nth-child(3){bottom:8px;left:17px;transform:rotate(40deg)}.brand-cookie i:nth-child(4){bottom:16px;left:5px;width:6px;height:6px}.brand-cookie i:nth-child(5){top:5px;right:15px;width:5px;height:5px}.brand-top{font-size:8px;letter-spacing:2.3px;font-weight:800;color:#d39b69;margin-bottom:2px}.brand-name{font-size:21px;font-weight:1000;letter-spacing:-.8px;line-height:1}.brand-name span{color:var(--gold)}.brand-dot{color:#ff9972}.header-right{display:flex;align-items:center;gap:18px}.event-status{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:1.5px;font-weight:800;color:#dfc0a3;white-space:nowrap}.status-dot,.live-led{height:7px;width:7px;display:inline-block;border-radius:100%;background:#f4ba77;box-shadow:0 0 0 4px #f5b97815}.is-live .status-dot,.live-led{background:#adf2b3;box-shadow:0 0 10px #adf2b344;animation:pulse 1.8s infinite}.button{border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 17px;border-radius:9px;font-weight:800;font-size:12px;letter-spacing:.2px;transition:transform .15s,background .2s,border-color .2s;text-decoration:none;white-space:nowrap}.button:not(:disabled):active{transform:scale(.97)}.button-primary{background:var(--gold);color:#2b180f;box-shadow:0 6px 25px #ec9b3930}.button-primary:not(:disabled):hover{background:#ffd08b}.button-ghost{background:transparent;border-color:#6b4b39;color:#e7cbb2}.button-ghost:not(:disabled):hover,.button-outline:not(:disabled):hover{background:#4d3529}.button-outline{background:#443025;border-color:#80553d;color:var(--cream)}.button-danger{background:#713b31;border-color:#ac5d4a;color:#fff0e7}.button-danger:not(:disabled):hover{background:#8c4538}.button-small{font-size:11px;padding:10px 14px}.gear-icon{font-size:16px;line-height:0}.ticker{border-top:1px solid #593c2d;border-bottom:1px solid #593c2d;display:flex;gap:34px;justify-content:center;align-items:center;padding:11px 12px;color:#b89069;letter-spacing:2.5px;font-size:10px;font-weight:800;overflow:hidden;white-space:nowrap}.ticker span:nth-child(2n){color:#e9b77d}.intro{padding:45px 0 35px}.eyebrow,.micro{font-size:10px;color:var(--gold);font-weight:900;letter-spacing:2.2px}.eyebrow{display:flex;align-items:center;gap:12px}.sparkle{font-size:15px}.eyebrow-line{height:1px;width:29px;background:#ac7751}.intro-main{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-top:15px}.intro h1{font-size:clamp(37px,5.1vw,69px);letter-spacing:-2.8px}.intro p{font-size:15px;margin-top:10px}.night-progress{min-width:168px;text-align:right;padding-bottom:5px}.progress-number{font-size:29px;font-weight:900;line-height:1;color:var(--cream)}.progress-number span{font-size:16px;color:#9a7f6b;font-weight:500}.night-progress>div:nth-child(2){font-size:9px;letter-spacing:1.5px;color:var(--muted);margin-top:8px;font-weight:900}.progress-track{height:5px;background:#563b2b;max-width:160px;margin:10px 0 0 auto;border-radius:20px;overflow:hidden}.progress-track>div{height:100%;background:var(--gold);width:0%;transition:width .5s}.main-grid{display:grid;grid-template-columns:minmax(0,1.29fr) minmax(310px,.83fr);gap:21px;align-items:start}.main-column,.sidebar{min-width:0}.card{border:1px solid var(--border);border-radius:16px;background:linear-gradient(160deg,#33241c,#291d18);box-shadow:0 14px 42px #11080525}.stage-card{overflow:hidden;min-height:630px}.section-top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:28px 31px 0}.section-top h2{font-size:29px;margin-top:8px}.stage-badge{border:1px solid #96603f;color:#f8c483;background:#4a3020;border-radius:30px;font-size:9px;font-weight:900;letter-spacing:1.25px;padding:7px 12px;white-space:nowrap}.wheel-panel{text-align:center;padding:19px 22px 31px;position:relative;overflow:hidden}.wheel-glow{position:absolute;left:50%;top:37%;transform:translate(-50%,-50%);width:390px;height:390px;max-width:90%;border-radius:50%;background:radial-gradient(circle,#b8693060,transparent 70%);filter:blur(30px);pointer-events:none}.wheel-title{font-size:22px;font-family:var(--display);color:var(--cream)}.wheel-message p{margin:7px auto 0;max-width:340px;font-size:12px}.spin-countdown{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1.2}.spin-countdown:empty{display:none}.spin-countdown:not(:empty){margin-top:8px}.wheel-labels{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:24px auto 0;max-width:500px}.wheel-label{border:1px solid #67452e;border-radius:20px;color:#e9c09b;font-size:10px;padding:4px 9px;background:#3e281c;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.wheel-label b{color:var(--gold);margin-right:3px}.wheel-labels:empty{display:none}.live-panel{padding:24px 37px 31px;text-align:center}.now-live{display:flex;align-items:center;gap:9px;justify-content:center;font-size:10px;letter-spacing:2.4px;font-weight:900;color:#aee2a8}.now-live-line{height:1px;width:35px;background:#715743}.now-live #liveRoundTag{color:#d3b295}.record-art{position:relative;width:150px;height:150px;margin:25px auto 20px}.record-circle{border-radius:100%;height:150px;width:150px;background:repeating-radial-gradient(circle at center,#261813 0 4px,#422b22 5px 7px,#231511 8px 12px);border:6px solid #543727;box-shadow:0 12px 25px #0a050680;display:grid;place-items:center;animation:recordRotate 11s linear infinite}.record-inner{border:5px solid #b77943;background:radial-gradient(circle,#ffdc95,#b76a37);border-radius:50%;height:69px;width:69px;color:#492917;font-size:40px;display:grid;place-items:center;line-height:1}.note{position:absolute;color:var(--gold);font-size:23px;animation:float 2.6s ease-in-out infinite}.note-one{top:-8px;right:-18px}.note-two{bottom:15px;left:-30px;animation-delay:1s}.song-title{font-family:var(--display);font-size:clamp(26px,3.5vw,39px);line-height:1.2;max-width:500px;margin:auto;overflow-wrap:anywhere}.song-creator{color:#c0a38c;font-size:13px;margin-top:5px}.song-link{display:inline-flex;margin-top:13px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:1.4px;text-decoration:underline;text-underline-offset:4px}.divider-line{height:1px;background:#654533;margin:26px 0 25px}.vote-intro{display:flex;align-items:end;justify-content:space-between;text-align:left;gap:10px}.vote-intro h3{font-family:var(--display);font-weight:500;font-size:25px;margin-top:5px}.mood{border-radius:12px;padding:8px 10px;background:#493226;color:var(--gold);font-size:9px;letter-spacing:1.2px;font-weight:900;white-space:nowrap}.score-block{text-align:left;margin:23px 0 17px;padding:19px 19px 13px;background:#221711;border:1px solid #583a2a;border-radius:13px}.score-row{display:flex;align-items:baseline;justify-content:space-between}.score-row label,.scale,.small-stat-label{font-size:9px;font-weight:900;letter-spacing:1.2px;color:#b99b83}.slider-value{color:var(--gold)}.slider-value strong{font-size:32px;font-weight:900;line-height:1}.slider-value span{font-size:12px;color:#c3a58b}#ratingSlider{appearance:none;-webkit-appearance:none;width:100%;height:10px;border:0;border-radius:12px;padding:0;background:linear-gradient(to right,#f7ba66 0%,#f7ba66 var(--slider-progress,75%),#614535 var(--slider-progress,75%),#614535 100%);margin:17px 0 8px;cursor:pointer}#ratingSlider::-webkit-slider-thumb{-webkit-appearance:none;width:27px;height:27px;border:5px solid #fff0d5;border-radius:50%;background:#e99743;box-shadow:0 2px 7px #100703}#ratingSlider::-moz-range-thumb{width:18px;height:18px;border:5px solid #fff0d5;border-radius:50%;background:#e99743;box-shadow:0 2px 7px #100703}.scale{display:flex;justify-content:space-between;gap:8px;font-size:8px;letter-spacing:.3px}.field-label{font-size:9px;letter-spacing:1.35px;color:#d0a881;font-weight:900;display:block;text-align:left;margin:13px 0 7px}.vote-form{display:flex;gap:9px}#nickname{flex:1;min-width:0}.vote-message{text-align:left;color:#b39a82;font-size:11px;margin:10px 0 18px;min-height:17px}.vote-message.success{color:#c4e6b4}.vote-message.error{color:#ff9a88}.live-stats{position:relative;background:#493024;border-radius:12px;border:1px solid #795037;display:flex;text-align:left;padding:16px 18px;gap:35px;overflow:hidden}.live-stats>div:not(.oven-emoji){display:flex;flex-direction:column;gap:4px;min-width:0}.live-stats strong{font-size:24px;line-height:1}.live-stats strong small{font-size:12px;font-weight:normal;color:#c7a58c}.oven-emoji{position:absolute;right:23px;top:8px;font-size:37px;color:#a56842;opacity:.6}.how-card{display:flex;gap:17px;align-items:flex-start;padding:23px 19px;margin-top:18px;border-radius:13px;background:#30221b;border:1px dashed #6c4a36}.tiny-cookie{font-size:29px}.how-card strong{font-size:11px;letter-spacing:1.5px;color:#f2ba7d}.how-card p{font-size:12px;line-height:1.7;margin-top:6px}.sidebar{display:flex;flex-direction:column;gap:18px}.leaderboard-card{padding:27px 24px 23px}.board-header{display:flex;justify-content:space-between;align-items:center}.board-header h2{font-size:32px;margin-top:9px}.trophy{border:1px solid #735037;background:#422b1e;width:50px;height:50px;display:grid;place-items:center;border-radius:14px;font-size:25px}.leaderboard-note{display:flex;gap:8px;align-items:center;background:#3f2a20;border:1px solid #61412f;border-radius:8px;padding:12px 13px;font-size:9px;font-weight:900;letter-spacing:1.2px;color:#ecc395;margin:24px 0 10px}.board-info{margin-left:auto;color:#a88970}.leader-rows{display:flex;flex-direction:column;gap:9px;min-height:305px}.empty-board{display:grid;place-items:center;text-align:center;min-height:300px;font-family:var(--display);font-size:20px;color:#b7a08d;padding:30px;line-height:1.4}.leader-item{display:grid;grid-template-columns:33px minmax(0,1fr) auto;gap:11px;align-items:center;padding:13px 11px;background:#3d2a21;border:1px solid #654333;border-radius:11px;animation:slideIn .3s ease-out}.leader-item.first{border-color:#ba8653;background:linear-gradient(100deg,#503525,#3b2920)}.leader-item.current{box-shadow:inset 3px 0 0 #a4e0a0}.rank-pill{height:31px;width:31px;display:grid;place-items:center;background:#634430;border-radius:7px;color:#eac294;font-size:13px;font-weight:900}.first .rank-pill{background:var(--gold);color:#312015}.leader-copy{min-width:0}.leader-song{font-size:13px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.leader-creator{font-size:10px;color:#b49a82;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.leader-mini{display:flex;align-items:center;gap:9px;color:#b89b84;font-size:9px;margin-top:8px}.mini-meter{height:4px;background:#69503c;border-radius:10px;overflow:hidden;flex:1}.mini-meter div{height:100%;background:#e2ab6b;border-radius:10px}.leader-score{text-align:right;white-space:nowrap;font-weight:900;font-size:19px;color:var(--gold)}.leader-score span{font-size:10px;color:#a98c75;font-weight:500}.leader-live{display:block;font-size:8px;letter-spacing:1px;color:#b1e9a9;font-weight:900}.board-footer{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #60412f;margin-top:18px;padding-top:17px;color:#ab8a74;font-size:9px;letter-spacing:1.1px;font-weight:900}.community-card{padding:20px}.community-header{display:flex;gap:14px;align-items:center;margin-bottom:18px}.community-icon{display:grid;place-items:center;color:var(--gold);background:#533824;border-radius:12px;width:45px;height:45px;font-size:28px;flex-shrink:0}.community-header strong{font-family:var(--display);font-size:18px;font-weight:500;line-height:1.1;display:block}.community-header p{font-size:11px;margin-top:7px}.community-card .button{width:100%;justify-content:space-between}.invite-note{font-size:10px;text-align:center;color:#ad937e;margin-top:11px}.end-panel{text-align:center;padding:75px 30px 60px}.winner-ornament{font-size:48px;margin-bottom:23px}.end-panel h2{font-size:48px;margin:10px 0}.end-panel p{font-size:14px}.champion{border:1px solid #af7c49;border-radius:15px;background:linear-gradient(145deg,#64422a,#3a251b);padding:25px;margin:32px auto;max-width:370px;box-shadow:0 10px 30px #1d110e}.champion-icon{font-size:35px}.champion-name{font-family:var(--display);font-size:27px;margin:10px 0 4px;overflow-wrap:anywhere}.champion-score{font-size:24px;font-weight:900;color:var(--gold)}.champion-score small{font-size:12px;color:#b9997e}.ending-note{color:#ad947d;font-size:12px}.host-section{margin-top:58px;scroll-margin-top:30px}.host-title-line{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:23px}.host-title-line h2{font-size:39px;margin:8px 0}.host-title-line p{font-size:13px}.host-grid{display:grid;grid-template-columns:1fr 1fr;gap:21px}.host-card{padding:25px}.host-card-head{display:flex;align-items:center;gap:11px;margin-bottom:18px}.host-number{display:grid;place-items:center;background:#5a3a26;border-radius:8px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:1px;height:30px;width:30px}.host-card-head h3{font-family:var(--display);font-weight:500;font-size:26px}.input-row{display:flex;gap:9px}.input-row input{min-width:0;flex:1}.host-live-status{background:#241811;border:1px solid #61422e;margin:21px 0;padding:13px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:9px;color:#efc592;font-size:12px;font-weight:700}.host-live-status span:last-child{color:#b59b83;font-size:10px}.host-main-buttons{display:flex;gap:9px}.host-main-buttons button{flex:1}.host-hint{font-size:11px;margin:12px 0 24px;line-height:1.65}.host-bottom-buttons{border-top:1px solid #654633;padding-top:20px;display:flex;gap:9px}.host-bottom-buttons button{flex:1}#addTrackForm{display:flex;flex-direction:column}#addTrackForm .button{margin-top:16px}.button-fill{width:100%}.mini-divider{display:flex;align-items:center;gap:10px;color:#a9876e;margin:16px 0 9px;font-size:9px;letter-spacing:1.4px;font-weight:900}.mini-divider:before,.mini-divider:after{content:'';height:1px;background:#674833;flex:1}.queued-card{margin-top:20px;padding:24px}.queued-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:17px}.queued-top h3{font-family:var(--display);font-size:25px;font-weight:500;margin-top:5px}.queue-count{font-size:9px;letter-spacing:1px;font-weight:900;color:var(--gold);background:#4c3121;border:1px solid #765037;padding:8px 10px;border-radius:10px}.queue-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}.queue-entry{background:#3b2920;border:1px solid #664434;border-radius:10px;display:flex;align-items:center;padding:12px 13px;gap:12px;min-width:0}.queue-entry-icon{background:#593b28;border-radius:8px;height:35px;width:35px;display:grid;place-items:center;color:var(--gold);font-size:16px;flex-shrink:0}.queue-entry-info{flex:1;min-width:0}.queue-entry-name{font-size:12px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.queue-entry-creator{font-size:10px;color:#ba9c85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.queue-entry-status{font-size:9px;letter-spacing:.8px;font-weight:900;color:#d4ae85}.queue-entry-status.live{color:#afdda4}.queue-entry-status.closed{color:#ad917e}.queue-remove{border:0;background:transparent;color:#da967c;font-size:22px;padding:3px 8px}.queue-remove:hover{color:#ffc3a5}.queue-empty{color:#b69b87;font-size:12px;padding:14px}.archive-card{margin-top:20px;padding:23px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.archive-card h3{font-family:var(--display);font-size:23px;font-weight:500;margin:8px 0}.archive-card p{font-size:11px}.archive-card>div:first-child{max-width:340px}.archive-list{display:flex;flex-direction:column;gap:7px;min-width:min(100%,380px)}.archive-row{display:flex;align-items:center;gap:10px;justify-content:space-between;font-size:11px;color:#e9c49d;background:#3c2a20;padding:9px 12px;border-radius:8px}.archive-row>span{flex:1}.archive-row button{font-size:10px;color:var(--gold);background:none;border:0;text-decoration:underline}.footer{display:flex;justify-content:space-between;gap:20px;padding:43px 0 30px;color:#8f735e;letter-spacing:1.3px;font-size:9px;font-weight:900}.footer span{color:#f58c68}.login-card{background:#34241b;color:var(--cream);border:1px solid #ac7a50;box-shadow:0 35px 90px #080402bf;border-radius:17px;padding:30px;width:min(420px,calc(100vw - 32px))}.dialog-cookie{font-size:37px;margin-bottom:12px}.login-card h2{font-size:33px;margin:8px 0}.login-card p{font-size:12px;line-height:1.7}.dialog-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}.toast-area{position:fixed;bottom:22px;right:22px;z-index:20;display:flex;flex-direction:column;gap:8px}.toast{max-width:320px;padding:13px 18px;background:#f4bf78;color:#29170f;border-radius:11px;font-size:12px;font-weight:900;box-shadow:0 8px 30px #130904aa;animation:slideIn .3s}.toast.error{background:#ef9d80}.crumb-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:12}.star{position:absolute;left:var(--x);top:var(--y);margin:calc(var(--size)*-.5) 0 0 calc(var(--size)*-.5);font-size:var(--size);line-height:1;color:var(--color);text-shadow:0 0 8px var(--color),0 0 22px #ffc97c88;will-change:transform,opacity;animation:starFly var(--dur) cubic-bezier(.16,.74,.24,1) var(--delay) both,starTwinkle .38s ease-in-out var(--delay) 5 alternate}.star.dot{width:var(--size);height:var(--size);border-radius:50%;background:var(--color);box-shadow:0 0 12px var(--color),0 0 28px #ffd98a88}[hidden]{display:none!important}@keyframes pulse{50%{box-shadow:0 0 0 7px #98dba714}}@keyframes float{50%{transform:translateY(-13px) rotate(10deg)}}@keyframes recordRotate{to{transform:rotate(360deg)}}@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes starFly{0%{opacity:0;transform:translate3d(0,0,0) scale(.2) rotate(0deg)}15%{opacity:1;transform:translate3d(calc(var(--dx)*.4),calc(var(--dy)*.4),0) scale(1.25) rotate(calc(var(--rot)*.35))}65%{opacity:1;transform:translate3d(calc(var(--dx)*.9),calc(var(--dy)*.9),0) scale(1) rotate(calc(var(--rot)*.8))}100%{opacity:0;transform:translate3d(var(--dx),calc(var(--dy) + 40px),0) scale(.4) rotate(var(--rot))}}@keyframes starTwinkle{from{filter:brightness(.8)}to{filter:brightness(2)}}@media(max-width:1050px){.app-wrap{padding:0 22px}.main-grid{grid-template-columns:minmax(0,1.1fr) minmax(290px,.9fr)}.leaderboard-card{padding:23px 18px}.board-header h2{font-size:27px}.live-panel{padding-left:24px;padding-right:24px}.scale{font-size:7px}.host-grid{gap:14px}.host-card{padding:19px}.host-main-buttons{flex-wrap:wrap}}@media(max-width:760px){.site-header{padding:22px 0}.header-right{gap:10px}.header-right .event-status{font-size:0}.header-right .event-status .status-dot{display:block}.ticker{gap:20px;font-size:9px}.intro{padding:31px 0 24px}.intro-main{align-items:flex-start;flex-direction:column}.intro h1{font-size:clamp(37px,8vw,54px)}.night-progress{display:flex;align-items:center;gap:10px;padding:0;min-width:0}.night-progress>div:nth-child(2){margin:0}.progress-track{min-width:90px;margin:0}.main-grid{grid-template-columns:1fr}.stage-card{min-height:0}.leader-rows{min-height:100px}.empty-board{min-height:145px}.host-grid,.queue-list{grid-template-columns:1fr}.host-title-line{align-items:flex-start}.archive-card{flex-direction:column}.archive-list{width:100%}.footer{flex-direction:column;gap:7px;padding:34px 0}.sidebar{gap:12px}.host-section{margin-top:41px}}@media(max-width:440px){.app-wrap{padding:0 14px}.brand-cookie{width:37px;height:37px}.brand-name{font-size:18px}.brand-top{font-size:7px}.header-right .button{font-size:10px;padding:9px}.gear-icon{display:none}.ticker{gap:13px;letter-spacing:1.2px}.eyebrow{font-size:8px;letter-spacing:1px}.intro h1{letter-spacing:-1.8px}.section-top{padding:23px 17px 0}.section-top h2{font-size:25px}.stage-badge{font-size:8px;padding:6px 8px}.live-panel{padding:18px 17px 24px}.vote-form{flex-direction:column}.vote-form button{width:100%}.vote-intro h3{font-size:21px}.mood{font-size:8px}.score-block{padding:16px 12px 12px}.scale{font-size:6.5px}.live-stats{gap:17px}.host-title-line h2{font-size:33px}.host-bottom-buttons{flex-wrap:wrap}.host-bottom-buttons button{flex:1}.input-row{flex-wrap:wrap}.input-row button{width:100%}.host-main-buttons{flex-direction:column}.archive-row{font-size:10px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.native-cookie-wheel{position:relative;margin:8px auto 24px;width:100%;max-width:560px;aspect-ratio:1;border-radius:12px;overflow:hidden;box-shadow:0 14px 35px #11080545}
+.native-cookie-wheel canvas{display:block;width:100%;height:auto;aspect-ratio:1}
+.stage-spin{margin:18px auto 0}
+.manual-winner-heading{font-size:21px;font-family:var(--display);margin:14px 0}
+.manual-flex{display:flex;gap:10px;align-items:center;margin:12px 0}.manual-flex select{min-width:0;flex:1;background:#211711;color:#fff3df;padding:11px;border:1px solid #80553d;border-radius:8px}
+.host-wheel-card{padding:23px;margin-top:20px}.host-wheel-card p{margin:12px 0}.host-wheel-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+@media(max-width:600px){.manual-flex{flex-direction:column}.manual-flex select,.manual-flex button{width:100%}}
+.login-gate{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:32px 16px}.login-card{text-align:center}.login-card .button{width:100%;margin-top:22px}.login-status{min-height:18px;margin-top:14px;font-size:12px}.login-status.error{color:#ffab91}.user-chip{font-size:11px;font-weight:800;color:#e7cbb2;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vote-as{flex:1;align-self:center;text-align:left;font-size:12px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.submit-as{font-size:12px;margin-top:14px}@media(max-width:440px){.user-chip{display:none}.site-header{flex-wrap:wrap;row-gap:14px}.header-right{width:100%;justify-content:flex-end}}
+.submit-card{margin-top:22px}.submit-note{margin:4px 0 2px;font-size:12px}.submit-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.submit-actions .button-primary{flex:1}#submitForm input:disabled,#submitForm textarea:disabled{opacity:.5}
+.genre-pill{display:inline-block;border:1px solid #80553d;border-radius:20px;padding:3px 10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--bright);margin-top:10px}.song-comment{margin:10px auto 0;max-width:440px;font-size:13px;color:var(--muted);font-style:italic}
+.standings{margin:18px auto 4px;max-width:520px;text-align:left}.standings .micro{text-align:center;margin-bottom:8px}.standings-rows{display:flex;flex-direction:column;gap:9px}
+.queue-tag{font-size:9px;letter-spacing:.1em;border:1px solid #67452e;border-radius:12px;padding:1px 7px;margin-left:7px;color:#e9c09b;vertical-align:middle}.queue-entry-meta{font-size:11px;color:var(--muted);margin-top:2px;font-style:italic;white-space:normal}
+.submit-card{padding:0 31px 26px}.submit-card .section-top{padding:28px 0 0}.queue-count{white-space:nowrap}.queue-remove{min-width:40px;min-height:40px;display:grid;place-items:center;border-radius:8px}.queue-remove:focus-visible{outline:2px solid var(--gold)}.toast-area{bottom:calc(22px + env(safe-area-inset-bottom))}
+@media(max-width:760px){input:not([type=range]),textarea,select{font-size:16px}.section-top{flex-wrap:wrap}.host-live-status{flex-wrap:wrap}.host-live-status button{margin-left:auto}.toast-area{left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}.toast{max-width:none;text-align:center}.queue-entry-name{white-space:normal}.scale{font-size:8px}.field-label{font-size:10px}.eyebrow{font-size:9px}.mood{font-size:9px}.header-right .button{font-size:11px;padding:10px 12px}}
+@media(max-width:440px){.submit-card{padding:0 17px 22px}.submit-card .section-top{padding:23px 0 0}.login-card{padding:26px 20px}.ticker{gap:10px}}
+@media(max-width:360px){.site-header{flex-wrap:wrap;gap:8px 12px;padding:22px 0 18px}.header-right{margin-left:auto}.brand-top{white-space:nowrap}.eyebrow{flex-wrap:wrap;gap:6px 10px}.eyebrow-line{display:none}}
+.wrapup-card{margin-top:20px;padding:24px}.wrapup-card h3{margin-top:6px}.wrapup-card .host-hint{margin-bottom:14px}.wrapup-row{margin-bottom:4px}
+select{font:inherit;color:var(--cream);background:#211711;border:1px solid #76513d;border-radius:10px;outline:none;padding:12px 13px;width:100%}select:focus{border-color:var(--gold)}
+.record-circle{position:relative;overflow:hidden}.record-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.record-art.has-cover{width:190px;height:190px}.record-art.has-cover .record-circle{width:190px;height:190px;animation-duration:1.8s}.record-art.has-cover .record-circle:after{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,#0000 0 3px,#00000024 3.5px 4px);box-shadow:inset 0 0 0 1px #0006;pointer-events:none}.record-art.has-cover .record-inner{position:relative;z-index:1;width:24px;height:24px;border:4px solid #3a2419;background:#120b08;font-size:0}
+.queue-listen{border:1px solid #76513d;background:#4a3022;color:var(--gold);border-radius:8px;min-width:40px;min-height:40px;font-size:14px;flex-shrink:0}.queue-listen:hover{background:#5c3d2b}
+.prelisten-card{margin-top:20px;padding:24px;scroll-margin-top:20px}.prelisten-body{display:flex;gap:20px;align-items:flex-start}.prelisten-cover{width:150px;flex-shrink:0}.prelisten-cover img{width:150px;height:150px;object-fit:cover;border-radius:12px;display:block;border:1px solid #76513d}.prelisten-main{flex:1;min-width:0}.prelisten-main .song-comment{margin:0 0 12px;text-align:left}.prelisten-main audio{width:100%;margin-bottom:8px}.prelisten-main .song-link{margin-top:0}.prelisten-main .host-hint{margin:8px 0 0}.note-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px}.note-meta{font-size:11px;color:var(--muted)}
+.live-note{margin:14px auto 0;max-width:440px;text-align:left;border:1px dashed #8a6043;border-radius:10px;padding:10px 13px;background:#2b1d16}.live-note p{font-size:12px;margin-top:4px;white-space:pre-wrap}
+@media(max-width:760px){.prelisten-body{flex-direction:column}.prelisten-cover,.prelisten-cover img{width:120px;height:120px}}
+.host-status{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;padding:16px 20px;margin-bottom:16px}.host-status strong{display:block;font-size:16px;color:var(--cream);margin-top:3px}.host-status>span{font-size:12px;color:var(--muted)}
+.host-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}.host-tab{border:1px solid #6b4b39;background:#2b1d16;color:#e7cbb2;border-radius:12px;padding:13px 8px;font-weight:800;font-size:13px;white-space:nowrap}.host-tab b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#5a3a26;color:var(--gold);margin-right:7px;font-size:11px}.host-tab[aria-selected=true]{background:var(--gold);color:#2b180f;border-color:var(--gold)}.host-tab[aria-selected=true] b{background:#2b180f}.host-tab:focus-visible{outline:2px solid var(--bright);outline-offset:2px}
+.host-card>.host-hint:first-of-type{margin:-6px 0 6px}.host-more{margin-top:16px}.host-more summary{cursor:pointer;color:var(--gold);font-size:12px;font-weight:800}.host-more[open] summary{margin-bottom:6px}.queue-help{margin:-6px 0 14px}
+.host-steps{margin:0 0 10px;padding-left:20px;color:var(--muted);font-size:13px;line-height:1.9}.host-steps b{color:var(--cream)}.host-next{font-family:var(--display);font-size:20px;color:var(--cream);margin:8px 0 16px}.host-live-card .host-main-buttons button{padding:15px 17px;font-size:13px}
+.wrapup-row{display:flex;flex-wrap:wrap;gap:9px}
+@media(max-width:440px){.host-tab{font-size:12px;padding:12px 4px}.host-tab b{width:19px;height:19px;margin-right:4px}.host-next{font-size:18px}}
+.queued-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:9px}.queued-top{flex-wrap:wrap}
+@media(max-width:440px){.queue-entry-icon{display:none}}
+.banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:13px 18px;border-radius:12px;background:linear-gradient(100deg,#6b3f22,#4a2e1f);border:1px solid #c58a52;color:var(--cream);font-size:15px;font-weight:800}.banner-icon{font-size:20px}
+.host-player{margin:16px auto 0;max-width:440px;text-align:left;border:1px solid #76513d;border-radius:12px;padding:12px 14px;background:#241811}.host-player audio{width:100%;margin-top:8px}.host-player .note-meta{display:block;margin-top:4px}
+.oops-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}.oops-row:empty{display:none}.host-voters{margin:-8px 0 14px}
+.show-extras{margin-top:20px}.show-extras .host-hint{margin:10px 0 12px}
+.team-card{margin-top:20px}.team-list{display:flex;flex-direction:column;gap:8px;margin:6px 0 12px}.team-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#3b2920;border:1px solid #664434;border-radius:10px;padding:8px 12px;font-size:13px;color:#e9c49d}.team-row b{color:var(--cream)}
+.stage-view #userName,.stage-view #hostToggle,.stage-view #logoutButton,.stage-view .ticker,.stage-view #submitCard,.stage-view .how-card,.stage-view .community-card,.stage-view #hostPanel,.stage-view .footer,.stage-view #liveNote,.stage-view .vote-intro,.stage-view .score-block,.stage-view .vote-form,.stage-view #voteMessage,.stage-view .divider-line{display:none!important}.stage-view .intro{padding:22px 0 18px}.stage-view .song-title{font-size:clamp(30px,4vw,46px)}.stage-view .host-player .micro{display:none}
+.leader-tie{display:block;font-size:8px;letter-spacing:1.3px;font-weight:900;color:var(--bright);margin-top:3px}
+</style>
+
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <section id="loginGate" class="login-gate" aria-labelledby="loginHeading"><div class="login-card"><div class="dialog-cookie">🍪</div><div class="micro">COOKIE SESSIONS · MEMBERS ONLY</div><h2 id="loginHeading">Pull up a <em>chair.</em></h2><p>Log in with the Discord account you use on our server. We only check that you are a member, and your server name goes on your votes and songs.</p><button id="discordLogin" class="button button-primary" type="button" hidden>Log in with Discord ↗</button><p id="loginStatus" class="login-status" aria-live="polite">Checking your login…</p></div></section>
+  <div id="app" class="app-wrap" hidden>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-cookie" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <div><div class="brand-top">THE COMMUNITY BAKE-OFF</div><div class="brand-name">COOKIE<span>SESSIONS</span><b class="brand-dot">.</b></div></div>
+      </div>
+      <div class="header-right">
+        <div id="eventStatus" class="event-status"><span class="status-dot"></span><span>LOADING THE OVEN</span></div>
+        <span id="userName" class="user-chip"></span>
+        <button id="hostToggle" class="button button-ghost button-small" type="button" hidden><span class="gear-icon">⚙</span> Host controls</button>
+        <button id="logoutButton" class="button button-ghost button-small" type="button">Log out</button>
+      </div>
+    </header>
+    <div id="banner" class="banner" role="status" hidden><span class="banner-icon" aria-hidden="true">📣</span><span id="bannerText"></span></div>
+    <div class="ticker" aria-label="Event tagline"><span>♪</span><span>SPIN IT</span><span>✦</span><span>PLAY IT</span><span>✦</span><span>RATE IT</span><span>✦</span><span>BAKE A WINNER</span><span>♪</span></div>
+    <section class="intro">
+      <div class="eyebrow"><span class="sparkle">✳</span> DISCORD LISTENING PARTY <span class="eyebrow-line"></span> MADE FOR MUSIC LOVERS</div>
+      <div class="intro-main"><div><h1 id="nightTitle">Tonight's <em>cookie jam.</em></h1><p>Fresh tracks. A spin of fate. You decide who takes the crown.</p></div>
+        <div class="night-progress"><span id="roundCount" class="progress-number">00 <span>/ 00</span></span><div>TRACKS PLAYED</div><div class="progress-track"><div id="progressFill"></div></div></div>
+      </div>
+    </section>
+    <main class="main-grid">
+      <div class="main-column">
+        <section class="card stage-card" aria-labelledby="stageHeading">
+          <div class="section-top"><div><div class="micro">THE LISTENING ROOM</div><h2 id="stageHeading">The Cookie Wheel</h2></div><span id="stageBadge" class="stage-badge">GETTING READY</span></div>
+          <div id="wheelPanel" class="wheel-panel">
+            <div class="wheel-glow" aria-hidden="true"></div>
+            <div class="native-cookie-wheel"><canvas id="wheelCanvas" width="720" height="720" role="img" aria-label="Chocolate-chip cookie wheel of queued songs"></canvas></div>
+            <div class="wheel-message"><div id="wheelHeadline" class="wheel-title">Whose song gets baked next?</div><p id="wheelSubtitle">The host spins the cookie to choose the next track.</p><div id="spinCountdown" class="spin-countdown" aria-live="polite"></div></div>
+            <div id="standings" class="standings" hidden><div id="standingsTitle" class="micro">STANDINGS SO FAR</div><div id="standingsRows" class="standings-rows"></div></div>
+            <button id="spinButton" class="button button-primary stage-spin" type="button" hidden disabled>🍪 Spin the cookie!</button>
+            <div id="wheelLabels" class="wheel-labels"></div>
+          </div>
+          <div id="livePanel" class="live-panel" hidden>
+            <div class="now-live"><span class="live-led"></span> NOW PLAYING <span class="now-live-line"></span><span id="liveRoundTag">ROUND 01</span></div>
+            <div id="recordArt" class="record-art" aria-hidden="true"><div class="record-circle"><img id="songCover" class="record-cover" alt="" hidden><div id="recordInner" class="record-inner">♫</div></div><span class="note note-one">♪</span><span class="note note-two">♫</span></div>
+            <div class="song-title" id="songTitle">Your next track</div>
+            <div class="song-creator" id="songCreator">by community member</div><span id="songGenre" class="genre-pill" hidden></span><blockquote id="songComment" class="song-comment" hidden></blockquote><div id="liveNote" class="live-note" hidden><div class="micro">HOST NOTES · ONLY HOSTS SEE THIS</div><p id="liveNoteText"></p></div>
+            <a id="songLink" class="song-link" target="_blank" rel="noopener noreferrer" hidden>↗ OPEN MUSIC TRACK</a><div id="hostPlayer" class="host-player" hidden><div class="micro">HOSTS ONLY · PLAY FOR THE ROOM</div><audio id="liveAudio" controls preload="metadata"></audio><span id="liveLength" class="note-meta"></span></div>
+            <div class="divider-line"></div>
+            <div class="vote-intro"><div><div class="micro">YOUR TASTE MATTERS</div><h3>How good was that track?</h3></div><div id="ratingMood" class="mood">VERY TASTY</div></div>
+            <div class="score-block"><div class="score-row"><label for="ratingSlider">DRAG TO RATE</label><div class="slider-value"><strong id="ratingDisplay">7.5</strong><span>/ 10</span></div></div>
+              <input id="ratingSlider" type="range" min="0" max="10" step="0.5" value="7.5" aria-label="Song rating from 0 to 10 in half-point steps"><div class="scale"><span>0 · NOT MY JAM</span><span>5 · PRETTY GOOD</span><span>10 · MASTERPIECE</span></div></div>
+            <div class="vote-form"><span id="voteAs" class="vote-as"></span><button id="submitVote" class="button button-primary" type="button">Drop my vote <span>↗</span></button></div>
+            <div id="voteMessage" class="vote-message" aria-live="polite">One vote per Discord account per song. You can edit it until voting closes.</div>
+            <div class="live-stats"><div><span class="small-stat-label">VOTES IN THE OVEN</span><strong id="liveCount">0</strong></div><div><span class="small-stat-label">LIVE COOKIE SCORE</span><strong id="liveAverage">— <small>/10</small></strong></div><div class="oven-emoji" aria-hidden="true">♨</div></div>
+          </div>
+          <div id="endPanel" class="end-panel" hidden><div class="winner-ornament">✦ 🍪 ✦</div><div class="micro">THE RESULTS ARE IN</div><h2>That's a <em>wrap!</em></h2><p>Every cookie has crumbled. Your community has spoken.</p><div id="champion" class="champion"></div><div class="ending-note">The final rankings are on the scoreboard. Thanks for listening!</div></div>
+        </section>
+        <section class="how-card"><span class="tiny-cookie">🍪</span><div><strong>HOW THIS COOKIE CRUMBLES</strong><p>The wheel picks a song at random. Listen together on Discord, then use the slider to cast a score from 0 to 10. The leaderboard updates while votes roll in.</p></div></section>
+        <section id="submitCard" class="card submit-card" aria-labelledby="submitHeading">
+          <div class="section-top"><div><div class="micro">YOUR ENTRY</div><h2 id="submitHeading">Submit <em>your song.</em></h2></div><span id="submitBadge" class="stage-badge">SUBMISSIONS OPEN</span></div>
+          <p id="submitNote" class="submit-note">One song per person. Paste a shared link from MozartAI, Suno, or anywhere else, and the wheel may pick it tonight.</p>
+          <form id="submitForm">
+            <p id="submitAs" class="submit-as"></p>
+            <label class="field-label" for="submitTitle">SONG TITLE *</label><input id="submitTitle" maxlength="100" required placeholder="That one amazing song">
+            <label class="field-label" for="submitURL">SONG LINK *</label><input id="submitURL" type="url" required placeholder="https://mozartai.com/s/… or https://suno.com/song/…">
+            <label class="field-label" for="submitGenre">GENRE (OPTIONAL)</label><input id="submitGenre" maxlength="30" list="genreList" placeholder="e.g. Synthwave"><datalist id="genreList"><option value="Pop"><option value="Rock"><option value="Hip-Hop"><option value="Electronic"><option value="Synthwave"><option value="Lo-fi"><option value="Jazz"><option value="Metal"><option value="Folk"><option value="Country"><option value="Classical"><option value="Ambient"><option value="Other"></datalist>
+            <label class="field-label" for="submitComment">A FEW WORDS (OPTIONAL)</label><textarea id="submitComment" rows="2" maxlength="200" placeholder="What should we listen for?"></textarea>
+            <div class="submit-actions"><button id="submitButton" class="button button-primary" type="submit">Submit my song ↗</button><button id="withdrawButton" class="button button-ghost" type="button" hidden>Withdraw my song</button></div>
+          </form>
+          <div id="submitMessage" class="vote-message" aria-live="polite"></div>
+        </section>
+      </div>
+      <aside class="sidebar">
+        <section class="card leaderboard-card" aria-labelledby="boardHeading"><div class="board-header"><div><div class="micro">THE PEOPLE HAVE SPOKEN</div><h2 id="boardHeading">The Cookie <em>Chart.</em></h2></div><div class="trophy">🏆</div></div>
+          <div class="leaderboard-note"><span class="status-dot"></span><span id="boardStatus">LIVE RANKINGS</span><span class="board-info">AVG / 10</span></div>
+          <div id="leaderRows" class="leader-rows"><div class="empty-board">Your chart will start rising after the first votes. 🍪</div></div>
+          <div class="board-footer"><div>RANKED BY AVERAGE SCORE</div><div id="totalVotes">0 VOTES</div></div>
+        </section>
+        <section class="card community-card"><div class="community-header"><span class="community-icon">✳</span><div><strong>Good music tastes better together.</strong><p>Invite the rest of the listening party.</p></div></div><button id="copyLink" class="button button-outline" type="button">Copy voting link <span>↗</span></button><div class="invite-note">Everyone visits the same site from their own phone or computer.</div></section>
+      </aside>
+    </main>
+    <section id="hostPanel" class="host-section" hidden>
+      <div class="host-title-line"><div><div class="micro">BAKER'S BACK OFFICE</div><h2>Host <em>control room.</em></h2><p>Three steps: prepare the songs, run the live show, then wrap up. Only hosts see this part.</p></div><button id="hostLogout" class="button button-ghost button-small" type="button">Hide controls</button></div>
+      <div class="card host-status" aria-live="polite"><div><div class="micro">RIGHT NOW</div><strong id="hostPhase">Waiting for tracks</strong></div><span id="hostCounts">0 queued</span><span id="submissionsState">Community submissions</span></div>
+      <div class="host-tabs" role="tablist" aria-label="Host steps">
+        <button id="hostTabPrepare" class="host-tab" role="tab" type="button" data-tab="prepare" aria-controls="hostPanePrepare" aria-selected="true"><b>1</b>Prepare</button>
+        <button id="hostTabLive" class="host-tab" role="tab" type="button" data-tab="live" aria-controls="hostPaneLive" aria-selected="false"><b>2</b>Live show</button>
+        <button id="hostTabWrap" class="host-tab" role="tab" type="button" data-tab="wrap" aria-controls="hostPaneWrap" aria-selected="false"><b>3</b>Wrap up</button>
+      </div>
+
+      <div id="hostPanePrepare" class="host-pane" role="tabpanel" aria-labelledby="hostTabPrepare">
+        <div class="host-grid">
+          <section class="card host-card"><div class="host-card-head"><span class="host-number">A</span><h3>The evening</h3></div>
+            <p class="host-hint">Give the evening a name, choose how the wheel looks, and decide whether members may still send songs.</p>
+            <label class="field-label" for="sessionTitle">EVENING NAME</label><div class="input-row"><input id="sessionTitle" maxlength="80" placeholder="Friday Cookie Playback"><button id="saveTitle" class="button button-outline">Save name</button></div>
+            <label class="field-label" for="wheelTheme">WHEEL LOOK · EVERYONE SEES IT AT ONCE</label><select id="wheelTheme"></select>
+            <div class="host-live-status"><span>Song submissions from members</span><button id="toggleSubmissions" class="button button-ghost button-small" type="button">Pause submissions</button></div>
+          </section>
+          <section class="card host-card"><div class="host-card-head"><span class="host-number">B</span><h3>Add a song yourself</h3></div>
+            <p class="host-hint">Members add their own songs on the main page. Use this only for a song you add on someone's behalf.</p>
+            <form id="addTrackForm"><label class="field-label" for="addTitle">SONG TITLE *</label><input id="addTitle" maxlength="100" required placeholder="That one amazing song"><label class="field-label" for="addCreator">WHOSE SONG IS IT?</label><input id="addCreator" maxlength="60" placeholder="Their Discord name"><label class="field-label" for="addURL">SONG LINK (OPTIONAL)</label><input id="addURL" type="url" placeholder="https://mozartai.com/s/…"><button class="button button-outline button-fill" type="submit">+ Add this song</button></form>
+            <details class="host-more"><summary>Add many songs at once</summary><label class="field-label" for="bulkTracks">ONE SONG PER LINE: TITLE | WHOSE | LINK</label><textarea id="bulkTracks" rows="4" placeholder="Cosmic Cookies | alice | https://mozartai.com/s/okdRDz5tiTw8&#10;Midnight Jam | bob"></textarea><button id="importButton" class="button button-outline button-fill" type="button">Add all these songs</button></details>
+          </section>
+        </div>
+        <section class="card queued-card"><div class="queued-top"><div><div class="micro">IN THE JAR</div><h3>Songs for tonight</h3></div><div class="queued-actions"><span id="queueCount" class="queue-count">0 TRACKS</span><button id="exportSongs" class="button button-outline button-small" type="button">↓ Download all songs</button></div></div><p class="host-hint queue-help">Press <b>▶ Listen</b> to hear a song before the show and write notes for the other hosts. <b>×</b> removes a song that has not been played yet. <b>Download all songs</b> saves the list with links and notes as a spreadsheet, any time before or during the show.</p><div id="queueList" class="queue-list"></div></section>
+        <section id="prelistenCard" class="card prelisten-card" hidden><div class="queued-top"><div><div class="micro">HOSTS ONLY · PRE-LISTEN</div><h3 id="prelistenTitle"></h3><div id="prelistenMeta" class="queue-entry-creator"></div></div><button id="prelistenClose" class="button button-ghost button-small" type="button">Close</button></div><div class="prelisten-body"><div id="prelistenCover" class="prelisten-cover" hidden><img id="prelistenCoverImg" alt="Song cover"></div><div class="prelisten-main"><blockquote id="prelistenComment" class="song-comment" hidden></blockquote><audio id="prelistenAudio" controls preload="none" hidden></audio><a id="prelistenLink" class="song-link" target="_blank" rel="noopener noreferrer">OPEN THE SONG ↗</a><p id="prelistenStatus" class="host-hint"></p><button id="playNowButton" class="button button-outline" type="button" hidden>⏭ Play this song now, without a spin</button><label class="field-label" for="noteText">HOST NOTES · SHARED WITH ALL HOSTS</label><textarea id="noteText" rows="4" maxlength="2000" placeholder="Vibe, standout moments, what to say when it plays…"></textarea><div class="note-row"><span id="noteMeta" class="note-meta"></span><button id="saveNote" class="button button-outline button-small" type="button">Save note</button></div></div></div></section>
+        <section class="card host-card team-card"><div class="host-card-head"><span class="host-number">C</span><h3>Co-hosts</h3></div>
+          <p class="host-hint">Co-hosts can do everything in this control room. The owners add or remove them here; it works at once, no site update needed.</p>
+          <div id="teamList" class="team-list"></div>
+          <form id="teamForm"><label class="field-label" for="teamId">THEIR DISCORD USER ID</label><input id="teamId" inputmode="numeric" maxlength="20" placeholder="Discord: right-click them → Copy User ID"><label class="field-label" for="teamName">NAME FOR THIS LIST</label><input id="teamName" maxlength="32" placeholder="Their Discord name"><button class="button button-outline button-fill" type="submit">+ Add co-host</button></form>
+          <p id="teamNote" class="host-hint"></p>
+        </section>
+      </div>
+
+      <div id="hostPaneLive" class="host-pane" role="tabpanel" aria-labelledby="hostTabLive" hidden>
+        <section class="card host-card host-live-card"><div class="host-card-head"><span class="host-number">▶</span><h3>Run the show</h3></div>
+          <ol class="host-steps"><li><b>Spin</b> the wheel. It picks a random song, and everyone sees the same spin.</li><li><b>Listen</b> together on Discord while people vote. Hosts get a player under the song title on the stage.</li><li><b>Close voting</b> to lock the score, then spin again.</li></ol>
+          <p id="hostNext" class="host-next"></p>
+          <p id="hostVoters" class="host-hint host-voters"></p>
+          <div class="host-main-buttons"><button id="hostSpin" class="button button-primary" type="button">🍪 Spin the wheel</button><button id="closeButton" class="button button-danger" type="button">Close voting</button></div>
+          <div class="oops-row"><button id="putBackButton" class="button button-outline" type="button" hidden>↩ Skip: put this song back in the jar</button><button id="reopenButton" class="button button-outline" type="button" hidden>↩ Re-open voting</button></div>
+          <details class="host-more"><summary>The wheel stopped but voting did not open?</summary><p id="wheelHelp" class="host-hint">This only happens if every host page was closed during a spin. Pick the song the wheel landed on and confirm it.</p><div class="manual-flex"><select id="manualWinner" aria-label="Song the wheel landed on"><option value="">Pick a queued track…</option></select><button type="button" class="button button-outline" id="manualPickButton" disabled>Confirm this song</button></div></details>
+        </section>
+        <section class="card host-card show-extras"><div class="host-card-head"><span class="host-number">✦</span><h3>For the room</h3></div>
+          <label class="field-label" for="bannerInput">MESSAGE TO EVERYONE</label>
+          <div class="input-row"><input id="bannerInput" maxlength="140" placeholder="e.g. 10-minute break, back at 21:30"><button id="bannerShow" class="button button-outline" type="button">Show</button></div>
+          <p class="host-hint">Appears at the top of every screen until you remove it.</p><button id="bannerClear" class="button button-ghost button-small" type="button" hidden>Remove the message</button>
+          <label class="field-label">SCREEN SHARE ON DISCORD</label>
+          <p class="host-hint">Opens a clean window for sharing: wheel, song, spinning cover, live score and chart. No notes, no voter names, no controls, but you still get the player there. In Discord, share that window.</p>
+          <button id="openStage" class="button button-outline" type="button">📺 Open screen-share view</button>
+        </section>
+      </div>
+
+      <div id="hostPaneWrap" class="host-pane" role="tabpanel" aria-labelledby="hostTabWrap" hidden>
+        <section class="card wrapup-card"><div class="micro">END OF THE NIGHT</div><h3>Finish up</h3>
+          <p class="host-hint"><b>Finish the evening</b> shows everyone the final rankings and closes submissions. You can do it early, between two songs.</p>
+          <div class="wrapup-row"><button id="finishButton" class="button button-outline" type="button">🏁 Finish the evening</button><button id="downloadButton" class="button button-outline" type="button">↓ Download results (spreadsheet)</button></div>
+        </section>
+        <section class="card wrapup-card"><div class="micro">NEXT TIME</div><h3>Start a new evening</h3>
+          <p class="host-hint">Saves tonight's results under <b>Past evenings</b>, clears all songs, submissions and notes, and opens submissions under the new name. Best done a day or two before the next session.</p>
+          <label class="field-label" for="newNightName">NAME OF THE NEXT EVENING</label>
+          <div class="input-row"><input id="newNightName" maxlength="80" placeholder="Cookie Playback · next Friday"><button id="newNightButton" class="button button-danger" type="button">Save tonight &amp; start new evening</button></div>
+        </section>
+        <section class="card archive-card"><div><div class="micro">LASTING MEMORIES</div><h3>Past evenings</h3><p>Download the results of earlier evenings.</p></div><div id="historyRows"></div></section>
+      </div>
+    </section>
+    <footer class="footer"><div>BAKED WITH <span>♥</span> FOR THE COMMUNITY</div><div>COOKIE SESSIONS · MUSIC IS BETTER SHARED · <a href="assets/IMAGE-CREDITS.md" target="_blank" rel="noopener">WHEEL PHOTO CREDITS</a></div></footer>
+  </div>
+  <div id="toastArea" class="toast-area" role="status" aria-live="polite"></div><div id="crumbLayer" class="crumb-layer" aria-hidden="true"></div>
+<script type="module">
+import { CookieWheel, createSpinPlan, spinAngle, WHEEL_THEMES, themeKey } from './cookie-wheel.mjs';
+/* Cookie Sessions — one static page + Firebase managed sync; no custom server. */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithCustomToken, signOut } from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
+import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-functions.js';
+import {
+  getFirestore, collection, doc, setDoc, updateDoc, deleteDoc, getDocs,
+  query, where, onSnapshot, serverTimestamp, runTransaction, writeBatch
+} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
+
+// Firebase Hosting serves the project's web settings at this reserved address, so no project
+// key is kept in this file. A plain local web server has no such address.
+const FIREBASE_INIT = '/__/firebase/init.json';
+// SETUP: the Client ID of the Discord application (Developer Portal > OAuth2). It is public, not a secret.
+const DISCORD_CLIENT_ID = '1563087139921727588';
+// Region of the discordLogin function in functions/index.js.
+const LOGIN_REGION = 'europe-west1';
+// SETUP: add each host's Discord user id here AND in firestore.rules.
+// This list controls the UI; Firestore rules enforce access to event data.
+const HOST_UIDS = [
+  '810808889116459019', // Callandra
+  '1505891427920379934' // yanti
+  // Add a comma after the previous id, then add the next host's Discord user id here.
+];
+// Names shown in the co-host list for the owners above.
+const OWNER_NAMES = { '810808889116459019': 'Callandra', '1505891427920379934': 'yanti' };
+// ?view=stage is the screen-share window: no controls, notes, or voter names.
+const STAGE_VIEW = new URLSearchParams(location.search).get('view') === 'stage';
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const avgText = value => value == null ? '—' : Number(value).toFixed(2);
+const scoreText = n => Number(n).toFixed(1);
+const phaseLabels = {ready:'GETTING READY',spinning:'COOKIE WHEEL SPINNING',voting:'VOTING IS OPEN',between:'NEXT TRACK SOON',finished:'FINAL RESULTS'};
+const session = {
+  get(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } },
+  put(key, value) { try { sessionStorage.setItem(key, value); } catch {} },
+  drop(key) { try { sessionStorage.removeItem(key); } catch {} }
+};
+const configured = !DISCORD_CLIENT_ID.includes('REPLACE_') && HOST_UIDS.some(uid=>uid && !uid.includes('REPLACE_'));
+let hostTab = 'prepare', hostTabPhase = '', coHosts = {ids:[],names:{}}, unsubHosts = () => {}, hostsRef, hostRoleWas = null, liveDuration = 0, auth, db, functions, myName = '', loginPending = false, notesRef, notes = [], unsubNotes = () => {}, prelistenId = '', noteDirty = false, eventRef, votesRef, submissionsRef, detailsRef, authUser = null, night = null, votes = [], submissions = [], details = [], hostVisible = false;
+let unsubNight = () => {}, unsubVotes = () => {}, unsubSubmissions = () => {}, unsubDetails = () => {};
+let votesSession = '', myScore = 7.5, dirtyVote = false, submitDirty = false, activeTrackId = '', priorVoteCount = -1;
+let cookieWheel, wheelAnimationFrame=0, wheelTimer=0, spinSeen={id:'',at:0}, finalizingSpinId='';
+const initialNight = () => ({sessionId:crypto.randomUUID(),title:'Tonight’s Cookie Playback',phase:'ready',currentId:'',tracks:[],spinId:'',submissionsOpen:true,trackStatus:{},revealed:{},wheelTheme:'cookie'});
+
+function toast(message, error=false) {
+  const div = document.createElement('div'); div.className = `toast${error?' error':''}`;
+  div.textContent = message; $('toastArea').appendChild(div); setTimeout(()=>div.remove(),4200);
+}
+function burst(count=6, anchor) {
+  // A radial shower of twinkling stars and glowing dots, bursting from the control that triggered it.
+  const layer=$('crumbLayer'), total=Math.min(60,count*3), box=anchor?.getBoundingClientRect?.();
+  const ox=box?box.left+box.width/2:(window.innerWidth||0)*.5, oy=box?box.top+box.height/2:(window.innerHeight||0)*.55;
+  const glyphs=['✦','✧','★','✶','✺'], colors=['#ffd98a','#fff3df','#ffc97c','#ff8b6a','#f6b961'];
+  for(let i=0;i<total;i++) {
+    const star=document.createElement('span'), dot=i%4===3, angle=Math.random()*Math.PI*2, distance=60+Math.random()*240;
+    star.className=dot?'star dot':'star'; if(!dot)star.textContent=glyphs[i%glyphs.length];
+    star.style.setProperty('--x',`${ox}px`); star.style.setProperty('--y',`${oy}px`);
+    star.style.setProperty('--dx',`${Math.cos(angle)*distance}px`); star.style.setProperty('--dy',`${Math.sin(angle)*distance*.8-50}px`);
+    star.style.setProperty('--rot',`${-200+Math.random()*400}deg`);
+    star.style.setProperty('--size',`${dot?5+Math.random()*6:14+Math.random()*18}px`);
+    star.style.setProperty('--color',colors[i%colors.length]);
+    star.style.setProperty('--delay',`${Math.random()*.3}s`); star.style.setProperty('--dur',`${1.6+Math.random()*.9}s`);
+    layer.append(star);setTimeout(()=>star.remove(),2900);
+  }
+}
+// Host-added tracks live in the event document. Community submissions are separate documents
+// whose play status is kept in night.trackStatus. Everything downstream sees one merged list.
+// A submission's song (title, link, genre, comment) is readable only by its submitter and the hosts
+// until it goes live and is copied into night.revealed, so everyone else hears it fresh.
+function allTracks() {
+  const status=night?.trackStatus||{}, revealed=night?.revealed||{};
+  const community=submissions.filter(s=>s.sessionId===night?.sessionId).map(s=>{
+    const d=revealed[s.trackId]||songOf(s.trackId)||{};
+    return {id:s.trackId,title:d.title||'',creator:s.nickname,url:d.url||'',genre:d.genre||'',comment:d.comment||'',
+      status:status[s.trackId]||'queued',userId:s.userId,community:true};
+  });
+  return [...(night?.tracks||[]),...community].filter(t=>t.status!=='removed');
+}
+function songOf(trackId,sessionId=night?.sessionId) { return details.find(d=>d.sessionId===sessionId && d.trackId===trackId); }
+// The wheel names who submitted each song, never the song itself.
+function wheelName(t) { return t.creator||'Mystery guest'; }
+function queued() { return allTracks().filter(t=>t.status==='queued'); }
+function mySubmission() { return authUser?submissions.find(s=>s.sessionId===night?.sessionId && s.userId===authUser.uid):undefined; }
+function mySong() { return authUser?songOf(`sub_${authUser.uid}`):undefined; }
+function isOwnTrack(t) { return !!authUser && t?.id===`sub_${authUser.uid}`; }
+function submissionsOpen() { return !!night && night.sessionId!=='not-created' && night.submissionsOpen===true && night.phase!=='finished'; }
+// Owners are listed in this file and the rules; co-hosts come from config/hosts and need no redeploy.
+function isOwner() { return !!authUser && HOST_UIDS.includes(authUser.uid); }
+function isHost() { return isOwner() || (!!authUser && coHosts.ids.includes(authUser.uid)); }
+const clock = seconds => { const t=Math.round(seconds); return `${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`; };
+function current() { return allTracks().find(t=>t.id===night.currentId); }
+function ballotId(t) { return `${night.sessionId}_${t.id}_${authUser.uid}`; }
+function safeUrl(url) { try { const u=new URL(url); return ['https:','http:'].includes(u.protocol)?u.href:''; } catch{return '';} }
+function enriched() {
+  const buckets=new Map();
+  for(const v of votes) {
+    if(v.sessionId!==night?.sessionId || !Number.isInteger(v.scoreHalf)) continue;
+    const arr=buckets.get(v.trackId)||[]; arr.push(v.scoreHalf/2); buckets.set(v.trackId,arr);
+  }
+  const tracks=allTracks().map(t=>{
+    const scores=buckets.get(t.id)||[];
+    const total=scores.reduce((a,b)=>a+b,0);
+    return {...t,votes:scores.length,average:scores.length?total/scores.length:null};
+  });
+  const sorted=tracks.filter(t=>t.votes>0 || t.status!=='queued')
+    .sort((a,b)=> (b.average??-1)-(a.average??-1) || b.votes-a.votes || a.title.localeCompare(b.title));
+  const key=t=>t.votes?Math.round(t.average*100):null;
+  let rank=0;
+  for(let i=0;i<sorted.length;i++) {
+    const k=key(sorted[i]);
+    if(k===null){sorted[i].rank=null;sorted[i].tied=false;continue;}
+    if(i===0 || k!==key(sorted[i-1]))rank=i+1;
+    sorted[i].rank=rank;
+    sorted[i].tied=sorted.some((o,j)=>j!==i && key(o)===k);
+  }
+  return {tracks,board:sorted};
+}
+function render() {
+  if(!night) return;
+  const rows=enriched(), finished=rows.tracks.filter(t=>t.status==='closed').length;
+  const total=rows.tracks.length, now=rows.tracks.find(t=>t.id===night.currentId);
+  const totalVotes=votes.filter(v=>v.sessionId===night.sessionId).length;
+  $('nightTitle').textContent=night.title;
+  $('roundCount').innerHTML=`${String(finished).padStart(2,'0')} <span>/ ${String(total).padStart(2,'0')}</span>`;
+  $('progressFill').style.width=total?`${finished/total*100}%`:'0%';
+  $('stageBadge').textContent=phaseLabels[night.phase]||'READY';
+  $('eventStatus').querySelector('span:last-child').textContent=phaseLabels[night.phase]||'READY';
+  $('eventStatus').classList.toggle('is-live',night.phase==='voting');
+  $('boardStatus').textContent=night.phase==='finished'?'FINAL STANDINGS':'LIVE RANKINGS';
+  $('totalVotes').textContent=`${totalVotes} ${totalVotes===1?'VOTE':'VOTES'}`;
+  $('wheelPanel').hidden= !['ready','between','spinning'].includes(night.phase);
+  $('livePanel').hidden=night.phase!=='voting';
+  $('endPanel').hidden=night.phase!=='finished';
+  $('stageHeading').textContent=night.phase==='voting'?'Now on the Turntable':night.phase==='finished'?"Tonight's Champion":'The Cookie Wheel';
+  $('spinButton').hidden=!isHost();
+  $('spinButton').disabled=!cookieWheel || !['ready','between'].includes(night.phase) || !queued().length;
+  $('spinButton').textContent=queued().length===1?'▶ Play the last song':'🍪 Spin the cookie!';
+  renderBoard(rows.board,now);
+  renderStandings(rows.board,finished);
+  if(night.phase==='voting' && now) renderSong(now,finished,total);
+  if(!['voting','finished'].includes(night.phase)) renderWheel();
+  if(night.phase==='finished') renderWinner(rows.board);
+  if(hostVisible) {renderHost(rows.tracks, finished);renderPrelisten();}
+  renderSubmit();
+  $('banner').hidden=!night.banner; $('bannerText').textContent=night.banner||'';
+  cookieWheel?.setTheme(night.wheelTheme);
+  $('recordInner').textContent=WHEEL_THEMES[themeKey(night.wheelTheme)].emoji;
+  syncCookieWheel();
+}
+function leaderRow(t,i) {
+  return `<div class="leader-item ${t.rank===1?'first':''} ${t.status==='live'?'current':''}">
+    <div class="rank-pill">${t.votes?t.rank:'—'}</div>
+    <div class="leader-copy"><div class="leader-song">${esc(t.title)}</div><div class="leader-creator">${esc(t.creator||'Community submission')}${t.genre?` · ${esc(t.genre)}`:''}</div>
+       <div class="leader-mini"><span>${t.votes} ${t.votes===1?'vote':'votes'}</span><span class="mini-meter"><div style="width:${(t.average??0)*10}%"></div></span></div>
+    </div><div class="leader-score">${avgText(t.average)}<span>/10</span>${t.tied?'<span class="leader-tie">TIE</span>':''}${t.status==='live'?'<span class="leader-live">● LIVE</span>':''}</div></div>`;
+}
+function renderStandings(board,finished) {
+  // Between songs the main stage shows the ranking so far; the sidebar chart stays live throughout.
+  const played=board.filter(t=>t.status==='closed');
+  const show=night.phase==='between' && played.length>0;
+  $('standings').hidden=!show;
+  if(!show)return;
+  $('standingsTitle').textContent=`STANDINGS AFTER ${finished} ${finished===1?'TRACK':'TRACKS'}`;
+  $('standingsRows').innerHTML=played.map((t,i)=>leaderRow(t,i)).join('');
+}
+function renderBoard(board,now) {
+  if(!board.length) { $('leaderRows').innerHTML='<div class="empty-board">First ratings will appear here live. 🍪</div>';priorVoteCount=0;return; }
+  $('leaderRows').innerHTML=board.map((t,i)=>leaderRow(t,i)).join('');
+  if(night.phase==='voting' && now) {
+    const t=board.find(v=>v.id===now.id);
+    if(t && priorVoteCount!==-1 && t.votes>priorVoteCount) burst(Math.min(8,t.votes-priorVoteCount+2),$('liveCount'));
+    priorVoteCount=t?.votes||0;
+  } else priorVoteCount=-1;
+}
+function renderSong(t,closed,total) {
+  const s=enriched().tracks.find(x=>x.id===t.id) || t;
+  $('songTitle').textContent=t.title; $('songCreator').textContent=t.creator?`submitted by ${t.creator}`:'Community submission';
+  $('songGenre').hidden=!t.genre; $('songGenre').textContent=t.genre||'';
+  $('songComment').hidden=!t.comment; $('songComment').textContent=t.comment?`“${t.comment}”`:'';
+  const note=isHost()?noteOf(t.id):null;
+  $('liveNote').hidden=!note; $('liveNoteText').textContent=note?.text||'';
+  $('liveRoundTag').textContent=`TRACK ${closed+1} / ${total}`;
+  $('liveCount').textContent=s.votes||0;
+  $('liveAverage').innerHTML=`${avgText(s.average)} <small>/10</small>`;
+  const url=safeUrl(t.url); $('songLink').hidden=!url;
+  if(url) $('songLink').href=url; else $('songLink').removeAttribute('href');
+  const own=votes.find(v=>v.trackId===t.id && v.sessionId===night.sessionId && v.userId===authUser?.uid);
+  if(activeTrackId!==t.id) {
+    activeTrackId=t.id; dirtyVote=false; setSlider(own ? own.scoreHalf/2 : 7.5); showLiveMedia(t);
+    $('voteMessage').className=own?'vote-message success':'vote-message';
+    $('voteMessage').textContent=own?'Your rating is saved. You can edit it until voting closes.':'One vote per Discord account per track. You may edit it until voting closes.';
+  } else if(own && !dirtyVote && myScore!==own.scoreHalf/2) setSlider(own.scoreHalf/2);
+  $('submitVote').textContent=own?'Update my vote ↗':'Drop my vote ↗';
+  const mine=isOwnTrack(t);
+  $('ratingSlider').disabled=mine; $('submitVote').disabled=mine; $('voteAs').textContent=mine?'':`Voting as ${myName}`;
+  if(mine) { $('voteMessage').className='vote-message'; $('voteMessage').textContent='This is your own song. Sit this one out while everyone else rates it.'; }
+}
+function setSlider(value) {
+  myScore=Number(value);
+  $('ratingSlider').value=String(myScore);
+  $('ratingSlider').style.setProperty('--slider-progress',`${myScore*10}%`);
+  $('ratingDisplay').textContent=scoreText(myScore);
+  $('ratingMood').textContent=myScore<2?'NOT MY JAM':myScore<4?'A BIT CRUMBLY':myScore<6?'NICE BITE':myScore<8?'VERY TASTY':myScore<9.5?'SO GOOD!':'LEGENDARY COOKIE!';
+}
+function renderWinner(board) {
+  const champions=board.filter(t=>t.votes && t.rank===1);
+  if(!champions.length) { $('champion').innerHTML='<div class="champion-name">No votes were submitted this evening.</div>'; return; }
+  if(champions.length===1) {
+    const winner=champions[0];
+    $('champion').innerHTML=`<div class="champion-icon">👑</div><div class="micro">TONIGHT'S TOP COOKIE</div><div class="champion-name">${esc(winner.title)}</div><div class="song-creator">${esc(winner.creator||'Community entry')}</div><div class="champion-score">${avgText(winner.average)} <small>/10 · ${winner.votes} votes</small></div>`;
+    return;
+  }
+  // Equal averages share the crown; nobody is quietly demoted by a tie-break nobody agreed to.
+  $('champion').innerHTML=`<div class="champion-icon">👑</div><div class="micro">IT’S A TIE · ${champions.length} TOP COOKIES</div>`
+    +champions.map(w=>`<div class="champion-name">${esc(w.title)}</div><div class="song-creator">${esc(w.creator||'Community entry')} · ${w.votes} ${w.votes===1?'vote':'votes'}</div>`).join('')
+    +`<div class="champion-score">${avgText(champions[0].average)} <small>/10 each</small></div>`;
+}
+function renderWheel() {
+  const options=queued();
+  const last=options.length===1 && night.phase!=='spinning';
+  $('wheelHeadline').textContent=night.phase==='spinning'?'The cookie wheel is turning…':last?'The last cookie in the jar':night.phase==='between'?'Ready for another spin?':'Whose track gets baked next?';
+  $('wheelSubtitle').textContent=night.phase==='spinning'?'The wheel is choosing the next song. Everyone shares the same spin.':
+    last?`Only ${wheelName(options[0])}’s song is left. ${isHost()?'Play it below, no spin needed.':'The host plays it without a spin.'}`:
+    options.length?`${options.length} tracks remaining. ${isHost()?'Spin the cookie wheel below.':'The host spins the cookie wheel to choose the next song.'}`:'Add some music submissions to start the event.';
+  $('wheelLabels').innerHTML=options.slice(0,20).map((x,i)=>`<span class="wheel-label"><b>${i+1}</b>${esc(wheelName(x))}</span>`).join('');
+  $('spinCountdown').textContent=night.phase==='spinning'?'🍪 SPINNING':'';
+}
+function renderHost(tracks,completed) {
+  if(document.activeElement!==$('sessionTitle')) $('sessionTitle').value=night.title;
+  $('hostPhase').textContent=phaseLabels[night.phase];
+  if(document.activeElement!==$('wheelTheme')) $('wheelTheme').value=themeKey(night.wheelTheme);
+  // When the evening moves on, the matching step opens; the host can still switch freely.
+  if(night.phase!==hostTabPhase){hostTabPhase=night.phase;showHostTab(suggestedHostTab());}
+  const left=queued(), live=current();
+  $('hostNext').textContent=
+    night.sessionId==='not-created'?'No evening yet. Start one under step 3, Wrap up.':
+    night.phase==='spinning'?'The wheel is turning…':
+    night.phase==='voting'?`Now playing: “${live?.title||'a song'}” · ${votes.filter(v=>v.sessionId===night.sessionId && v.trackId===night.currentId).length} votes so far.${liveDuration?` Song length ${clock(liveDuration)}.`:''} Close voting when everyone has rated it.`:
+    night.phase==='finished'?'The evening is finished. Download the results under step 3, Wrap up.':
+    left.length>1?`Next: spin the wheel. ${left.length} songs are waiting.`:
+    left.length===1?'One song left: play it, no spin needed.':'No songs yet. Add songs or wait for members to send theirs.';
+  $('hostSpin').textContent=$('spinButton').textContent; $('hostSpin').disabled=$('spinButton').disabled;
+  $('hostSpin').hidden=night.phase==='voting'; $('closeButton').hidden=night.phase!=='voting';
+  const voters=night.phase==='voting'?votes.filter(v=>v.sessionId===night.sessionId && v.trackId===night.currentId).map(v=>v.nickname):[];
+  $('hostVoters').textContent=night.phase!=='voting'?'':
+    (voters.length?`Voted: ${voters.join(', ')}`:'No votes yet.')+(live?.community?` · ${live.creator} cannot rate their own song.`:'');
+  $('putBackButton').hidden=night.phase!=='voting';
+  const closed=night.lastClosedId && allTracks().find(t=>t.id===night.lastClosedId);
+  $('reopenButton').hidden=!(closed && ['between','finished'].includes(night.phase));
+  if(closed)$('reopenButton').textContent=`↩ Re-open voting for “${closed.title||'the last song'}”`;
+  $('bannerClear').hidden=!night.banner;
+  if(document.activeElement!==$('bannerInput') && night.banner)$('bannerInput').value=night.banner;
+  renderTeam();
+  $('hostCounts').textContent=`${queued().length} ${queued().length===1?'song':'songs'} waiting · ${completed} played`;
+  const open=night.submissionsOpen===true;
+  $('submissionsState').textContent=`Submissions ${open?'open':'paused'} · ${allTracks().filter(t=>t.community).length} received`;
+  $('toggleSubmissions').textContent=open?'Pause submissions':'Open submissions';
+  $('toggleSubmissions').disabled=night.phase==='finished';
+  $('closeButton').disabled=night.phase!=='voting';
+  $('finishButton').disabled=['spinning','voting','finished'].includes(night.phase) || night.sessionId==='not-created';
+  $('queueCount').textContent=`${tracks.length} TRACKS`;
+  $('exportSongs').disabled=!tracks.length;
+  $('queueList').innerHTML=tracks.length?tracks.map(t=>`<div class="queue-entry"><div class="queue-entry-icon">${t.status==='closed'?'✓':t.status==='live'?'♫':'🍪'}</div>
+     <div class="queue-entry-info"><div class="queue-entry-name">${esc(t.title||'Untitled')}${t.community?'<span class="queue-tag">COMMUNITY</span>':''}${noteOf(t.id)?'<span class="queue-tag" title="Has host notes">NOTE</span>':''}</div><div class="queue-entry-creator">${esc(t.creator||'Community entry')}${t.genre?` · ${esc(t.genre)}`:''}</div>${t.comment?`<div class="queue-entry-meta">“${esc(t.comment)}”</div>`:''}</div>
+     <button class="queue-listen" data-listen="${esc(t.id)}" title="Listen and write notes" aria-label="Listen to ${esc(t.title||'this song')} and write notes">▶ Listen</button>
+     ${t.status==='queued'?`<button class="queue-remove" data-remove="${esc(t.id)}" title="Remove queued song">×</button>`:`<span class="queue-entry-status ${t.status}">${t.status.toUpperCase()}</span>`}</div>`).join(''):'<div class="queue-empty">No tracks yet. Add them above.</div>';
+  const sel=$('manualWinner'); const previous=sel.value;
+  sel.innerHTML='<option value="">Pick a queued track…</option>'+queued().map(t=>`<option value="${esc(t.id)}">${esc(t.title)}</option>`).join('');
+  if(queued().some(t=>t.id===previous))sel.value=previous;
+  $('manualPickButton').disabled=night.phase!=='spinning' || !sel.value;
+}
+function validTrack(title,creator,url) {
+  if(!title || title.length>100) throw Error('Song title must contain 1–100 characters.');
+  if(creator.length>60)throw Error('Creator name is too long.');
+  if(url && !safeUrl(url))throw Error('The music link must begin with https:// or http://.');
+  return {id:crypto.randomUUID(),title,creator,url,status:'queued'};
+}
+function onEventUpdate(snap) {
+  const next=snap.exists()?snap.data():null;
+  const changed=next?.sessionId!==night?.sessionId;
+  night=next;
+  if(changed) {
+    activeTrackId=''; finalizingSpinId=''; priorVoteCount=-1; votes=[]; votesSession='';
+  }
+  if(!night) {
+    night=initialNight(); night.sessionId='not-created';
+    $('wheelSubtitle').textContent='Your host can create the first playback event from Host controls.';
+  }
+  if(votesSession!==night.sessionId) subscribeVotes(night.sessionId);
+  render();
+}
+function subscribeVotes(sessionId) {
+  unsubVotes(); unsubSubmissions(); unsubDetails(); unsubNotes(); votesSession=sessionId;votes=[];submissions=[];details=[];notes=[];submitDirty=false;
+  if(sessionId==='not-created' || !authUser)return;
+  const q=query(votesRef,where('sessionId','==',sessionId));
+  unsubVotes=onSnapshot(q,snap=>{votes=snap.docs.map(d=>d.data());render();},
+      err=>toast(`Live votes: ${err.message}`,true));
+  unsubSubmissions=onSnapshot(query(submissionsRef,where('sessionId','==',sessionId)),
+      snap=>{submissions=snap.docs.map(d=>d.data()).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));render();},
+      err=>toast(`Song submissions: ${err.message}`,true));
+  // Hosts read every song; anyone else may only query their own (the rules refuse the rest).
+  const mine=isHost()?query(detailsRef,where('sessionId','==',sessionId))
+    :query(detailsRef,where('sessionId','==',sessionId),where('userId','==',authUser.uid));
+  unsubDetails=onSnapshot(mine,snap=>{details=snap.docs.map(d=>d.data());render();},
+      err=>toast(`Song details: ${err.message}`,true));
+  if(isHost()) unsubNotes=onSnapshot(query(notesRef,where('sessionId','==',sessionId)),
+      snap=>{notes=snap.docs.map(d=>d.data());render();},err=>toast(`Host notes: ${err.message}`,true));
+}
+async function saveNight(next) {
+  if(!isHost())throw Error('Host login required.');
+  if(night.sessionId==='not-created')await setDoc(eventRef,next);
+  else await setDoc(eventRef,next);
+}
+async function mutate(updater) {
+  if(!isHost()) throw Error('Host login required.');
+  // Read the latest event so edits from another host are retained on retries.
+  return runTransaction(db,async transaction=>{
+    const snapshot=await transaction.get(eventRef);
+    const obj=structuredClone(snapshot.exists()?snapshot.data():initialNight());
+    updater(obj);transaction.set(eventRef,obj);return obj;
+  });
+}
+async function guarded(fn,success='') {
+  try { await fn(); if(success)toast(success);return true; }
+  catch(e) {toast(e.message||String(e),true);return false;}
+}
+async function vote() {
+  if(!authUser || night.phase!=='voting')return;
+  const t=current(), button=$('submitVote');
+  if(!t)return;
+  if(isOwnTrack(t)){toast('You cannot rate your own song.',true);return;}
+  button.disabled=true;
+  await guarded(async()=>{
+    await setDoc(doc(votesRef,ballotId(t)),{
+      sessionId:night.sessionId,trackId:t.id,userId:authUser.uid,
+      scoreHalf:Math.round(myScore*2),nickname:myName,updatedAt:serverTimestamp()
+    });
+    dirtyVote=false;
+    $('voteMessage').textContent=`Your ${scoreText(myScore)}/10 rating is saved. You may still change it.`;
+    $('voteMessage').className='vote-message success'; burst(8,$('submitVote'));
+  },'Your cookie rating has been counted!');
+  button.disabled=false;
+}
+function reducedMotion() { return !!window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches; }
+function hasSpinPlan(n) { return Array.isArray(n.spinTracks) && [n.spinStartedAt,n.spinDurationMs,n.spinFinalAngle].every(Number.isFinite); }
+function activePlan() {
+  // Device clocks differ. A plan first seen before its own start time animates from the
+  // moment it arrives instead of standing still; the stored target never changes.
+  if(spinSeen.id!==night.spinId)spinSeen={id:night.spinId,at:Date.now()};
+  return {...night,spinStartedAt:Math.min(night.spinStartedAt,spinSeen.at)};
+}
+function syncCookieWheel() {
+  cancelAnimationFrame(wheelAnimationFrame);clearTimeout(wheelTimer);
+  if(!cookieWheel || !night || !['ready','between','spinning'].includes(night.phase))return;
+  if(night.phase!=='spinning' || !hasSpinPlan(night)) {
+    cookieWheel.draw(queued().map(t=>({id:t.id,title:wheelName(t)})));return; // Idle wheel, or an old round without a stored plan (confirm manually).
+  }
+  const plan=activePlan(), still=reducedMotion();
+  const draw=()=>{
+    cancelAnimationFrame(wheelAnimationFrame);clearTimeout(wheelTimer);
+    if(night.phase!=='spinning')return;
+    const now=Date.now(), remaining=plan.spinStartedAt+plan.spinDurationMs-now;
+    cookieWheel.draw(plan.spinTracks,still?plan.spinFinalAngle:spinAngle(plan,now));
+    $('spinCountdown').textContent=remaining>0?`🍪 ${Math.ceil(remaining/1000)}s`:'🍪 Selecting the next song…';
+    if(remaining<=0){finishCookieSpin();return;}
+    if(!still)wheelAnimationFrame=requestAnimationFrame(draw);
+    // Hidden tabs pause animation frames; a timer still finishes the countdown and the round.
+    wheelTimer=setTimeout(draw,still?Math.min(remaining,1000):remaining);
+  };
+  draw();
+}
+async function finishCookieSpin() {
+  if(!isHost() || night.phase!=='spinning' || !night.spinTargetId || finalizingSpinId===night.spinId)return;
+  const id=night.spinId;finalizingSpinId=id;
+  try {await setWinner(night.spinTargetId,id);}
+  catch(e) {
+    // Another host may already have finalized this exact round.
+    if(!e.message.includes('already') && !e.message.includes('changed')) {
+      finalizingSpinId='';toast('Could not open voting: '+e.message+'. Use Confirm winner to retry.',true);
+    }
+  }
+}
+// Transaction helpers: host tracks carry their status inline; community songs are marked in trackStatus.
+function markStatus(s,id,status) {
+  if(s.tracks.some(t=>t.id===id)) { s.tracks=s.tracks.map(t=>t.id===id?{...t,status}:t); return; }
+  if(status==='queued') {
+    // Back in the jar: no status, and the song is private again until it plays.
+    const trackStatus={...(s.trackStatus||{})}, revealed={...(s.revealed||{})};
+    delete trackStatus[id]; delete revealed[id]; s.trackStatus=trackStatus; s.revealed=revealed; return;
+  }
+  s.trackStatus={...(s.trackStatus||{}),[id]:status};
+  if(status!=='live' || s.revealed?.[id])return;
+  // Going live is the moment a community song becomes public.
+  const d=songOf(id,s.sessionId)||{};
+  s.revealed={...(s.revealed||{}),[id]:{title:d.title||'Untitled',url:d.url||'',genre:d.genre||'',comment:d.comment||''}};
+}
+function queuedIn(s,id) {
+  const host=s.tracks.find(t=>t.id===id);
+  if(host)return host.status==='queued';
+  return !(s.trackStatus||{})[id] && submissions.some(x=>x.sessionId===s.sessionId && x.trackId===id);
+}
+function queuedPool(s) {
+  const status=s.trackStatus||{};
+  return [...s.tracks.filter(t=>t.status==='queued'),
+    ...submissions.filter(x=>x.sessionId===s.sessionId && !status[x.trackId]).map(x=>({id:x.trackId,creator:x.nickname}))];
+}
+async function spin() {
+  if(!isHost()) return;
+  if(!queued().length || !cookieWheel)return;
+  if(!['ready','between'].includes(night.phase))return;
+  // Mark the round for every connected voter: a spin plan, or, for the last song, voting right away.
+  let selectedNight, direct=false;
+  const ok=await guarded(async()=>{
+    selectedNight=await mutate(s=>{
+      if(!['ready','between'].includes(s.phase))throw Error('Another host already started this round.');
+      const pool=queuedPool(s);
+      if(!pool.length)throw Error('There are no queued tracks left.');
+      s.spinId=crypto.randomUUID();s.currentId='';s.lastClosedId='';
+      direct=pool.length===1;
+      if(direct){markStatus(s,pool[0].id,'live');s.phase='voting';s.currentId=pool[0].id;return;}
+      Object.assign(s,createSpinPlan(pool.map(t=>({id:t.id,title:wheelName(t)})),Date.now()));
+      s.phase='spinning';
+    });
+  });
+  if(!ok)return;
+  // Snapshots animate all clients. Keep the initiating host current as well.
+  night=selectedNight;render();
+  if(direct){burst(14,$('spinButton'));toast(`Last song! Now playing: ${current()?.title||''}`);$('livePanel').scrollIntoView({behavior:'smooth',block:'start'});return;}
+  toast('The cookie wheel is spinning!');
+  $('wheelPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function setWinner(id,expectedSpinId=night?.spinId) {
+  if(!isHost() || night.phase!=='spinning')return;
+  const t=queued().find(t=>t.id===id); if(!t)throw Error('The chosen track is not in the queue.');
+  await mutate(s=>{
+    if(s.phase!=='spinning')throw Error('Another host already confirmed this round.');
+    if(s.spinId!==expectedSpinId)throw Error('The spin changed before its result was confirmed.');
+    if(!queuedIn(s,id))throw Error('The chosen track is no longer in the queue.');
+    markStatus(s,id,'live');
+    s.phase='voting';s.currentId=id;
+  });
+  burst(14,$('wheelCanvas'));
+  toast(`Now playing: ${t.title}`);
+}
+async function closeVoting() {
+  const id=night.currentId;
+  await mutate(s=>{
+    if(s.phase!=='voting' || s.currentId!==id)throw Error('Another host already changed this voting round.');
+    markStatus(s,id,'closed');
+    s.currentId='';s.phase=queuedPool(s).length?'between':'finished';s.lastClosedId=id;
+  });
+}
+// The "oops" buttons: re-open the round just closed, or skip the live song and put it back in the jar.
+async function reopenVoting() {
+  const id=night.lastClosedId;
+  await mutate(s=>{
+    if(!['between','finished'].includes(s.phase) || !id || s.lastClosedId!==id)throw Error('There is no closed round to re-open.');
+    markStatus(s,id,'live'); s.phase='voting'; s.currentId=id; s.lastClosedId='';
+  });
+}
+async function putBackInJar() {
+  const id=night.currentId, session=night.sessionId;
+  await mutate(s=>{
+    if(s.phase!=='voting' || s.currentId!==id)throw Error('Another host already changed this voting round.');
+    markStatus(s,id,'queued');
+    const played=s.tracks.some(t=>t.status==='closed') || Object.values(s.trackStatus||{}).includes('closed');
+    s.currentId=''; s.lastClosedId=''; s.phase=played?'between':'ready';
+  });
+  // Votes from the skipped round would count later; the song gets a fresh round instead.
+  await Promise.allSettled(votes.filter(v=>v.sessionId===session && v.trackId===id)
+    .map(v=>deleteDoc(doc(votesRef,`${session}_${id}_${v.userId}`))));
+}
+async function playNow(id) {
+  await mutate(s=>{
+    if(!['ready','between'].includes(s.phase))throw Error('Finish the current round first.');
+    if(!queuedIn(s,id))throw Error('This song is no longer waiting.');
+    s.spinId=crypto.randomUUID(); markStatus(s,id,'live'); s.phase='voting'; s.currentId=id; s.lastClosedId='';
+  });
+}
+function csvString(rows,title) {
+  const items=[['Rank','Tie','Song','Creator','Genre','Comment','Average / 10','Votes','Status','URL']];
+  rows.forEach(t=>items.push([t.rank??'',t.tied?'TIE':'',t.title,t.creator||'',t.genre||'',t.comment||'',t.average==null?'':t.average.toFixed(2),t.votes,t.status,t.url||'']));
+  return csvText(items);
+}
+// The byte-order mark makes Excel read the file as UTF-8.
+function csvText(items) {
+  const escapeCSV=x=>`"${String(x??'').replace(/"/g,'""')}"`;
+  return '\ufeff'+items.map(cols=>cols.map(escapeCSV).join(',')).join('\r\n');
+}
+// Every song of the evening with its details and the hosts' notes, for preparing the show.
+function songsCsv() {
+  const items=[['#','Song','Submitted by','Genre','Comment','Link','Added by','Status','Sent at','Host notes','Note saved by']];
+  const sent=id=>submissions.find(x=>x.sessionId===night.sessionId && x.trackId===id)?.createdAt;
+  const status={queued:'Waiting',live:'Playing',closed:'Played'};
+  allTracks().forEach((t,i)=>{
+    const note=noteOf(t.id), at=t.community?sent(t.id):null;
+    items.push([i+1,t.title,t.creator||'',t.genre||'',t.comment||'',t.url||'',t.community?'Member':'Host',status[t.status]||t.status,
+      at?new Date(at).toLocaleString():'',note?.text||'',note?.editedBy||'']);
+  });
+  return csvText(items);
+}
+function downloadCsv(text,name) {
+  const blob=new Blob([text],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=`cookie-session-${name.replace(/[^a-z0-9_-]/gi,'-').slice(0,48)}.csv`;
+  document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function exportRows(rows,title) { downloadCsv(csvString(rows,title),title); }
+const SUBMIT_FIELDS=['submitTitle','submitURL','submitGenre','submitComment','submitButton'];
+function renderSubmit() {
+  const own=mySubmission(), song=own&&mySong(), status=own?(night.trackStatus||{})[own.trackId]||'queued':'';
+  const open=submissionsOpen(), locked=!authUser || !open || (!!own && status!=='queued');
+  $('submitBadge').textContent=night.sessionId==='not-created'?'NOT YET OPEN':night.phase==='finished'?'EVENING OVER':open?'SUBMISSIONS OPEN':'SUBMISSIONS PAUSED';
+  for(const id of SUBMIT_FIELDS)$(id).disabled=locked;
+  $('withdrawButton').hidden=!(authUser && own && status==='queued' && night.phase!=='spinning');
+  $('submitButton').textContent=own?'Update my song ↗':'Submit my song ↗';
+  $('submitAs').textContent=`Submitting as ${myName}`;
+  if(!submitDirty) {
+    $('submitTitle').value=song?.title||''; $('submitURL').value=song?.url||'';
+    $('submitGenre').value=song?.genre||''; $('submitComment').value=song?.comment||'';
+  }
+  $('submitNote').textContent=
+    night.sessionId==='not-created'?'Your host has not opened an evening yet. Check back soon.':
+    night.phase==='finished'?'This evening is over. Thanks for listening and voting!':
+    own && status==='live'?`Your song “${song?.title||''}” is playing right now. Good luck!`:
+    own && status==='closed'?`Your song “${song?.title||''}” has been played. See where it landed on the chart.`:
+    own && status==='removed'?'The host removed your submission. Ask them in Discord if that seems wrong.':
+    !open?'Submissions are paused by the host right now.':
+    own?'Your song is in the jar. Others only see your name until the wheel picks it; you can edit or withdraw it until then.':
+    'One song per person. Paste a shared link from MozartAI, Suno, or anywhere else. Only your name shows until the wheel picks it, so everyone hears it fresh.';
+}
+async function submitSong(event) {
+  event.preventDefault();
+  if(!authUser || !submissionsOpen())return;
+  const title=$('submitTitle').value.trim(), link=safeUrl($('submitURL').value.trim());
+  const genre=$('submitGenre').value.trim(), comment=$('submitComment').value.trim(), own=mySubmission(), now=Date.now();
+  const ok=await guarded(async()=>{
+    if(!title || title.length>100)throw Error('Song title must contain 1–100 characters.');
+    if(!link || !link.startsWith('https://'))throw Error('Paste the full song link, starting with https://.');
+    if(genre.length>30)throw Error('Genre is too long (maximum 30 characters).');
+    if(comment.length>200)throw Error('Keep the comment under 200 characters.');
+    $('submitButton').disabled=true;
+    try {
+      // Public half (who) and private half (what) are written together; see allTracks().
+      const id=`${night.sessionId}_${authUser.uid}`, base={sessionId:night.sessionId,userId:authUser.uid,trackId:`sub_${authUser.uid}`};
+      const batch=writeBatch(db);
+      batch.set(doc(detailsRef,id),{...base,title,url:link,genre,comment});
+      batch.set(doc(submissionsRef,id),{...base,nickname:myName,createdAt:own?.createdAt??now,updatedAt:now});
+      await batch.commit();
+    } catch(e) {
+      if(e.code==='permission-denied')throw Error('Submissions are closed right now, or your song has already been played.');
+      throw e;
+    }
+    submitDirty=false;
+  }, own?'Your song is updated.':'Your song is in the cookie jar!');
+  $('submitButton').disabled=false;
+  $('submitMessage').className=ok?'vote-message success':'vote-message';
+  $('submitMessage').textContent=ok?'Saved. You can edit or withdraw it until the wheel picks it.':'';
+}
+async function withdrawSong() {
+  const own=mySubmission(); if(!own || !authUser)return;
+  if(!confirm(`Withdraw “${mySong()?.title||'your song'}” from tonight's jar?`))return;
+  await guarded(async()=>{
+    const id=`${night.sessionId}_${authUser.uid}`, batch=writeBatch(db);
+    batch.delete(doc(submissionsRef,id)); batch.delete(doc(detailsRef,id)); await batch.commit(); submitDirty=false;
+  },'Your song was withdrawn.');
+}
+async function refreshArchive() {
+  if(!isHost())return;
+  const snapshot=await getDocs(collection(db,'archives'));
+  const list=snapshot.docs.map(d=>d.data()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0)).slice(0,15);
+  $('historyRows').innerHTML=list.length?`<div class="archive-list">${list.map(s=>`<div class="archive-row"><span>${esc(s.title)} · ${s.tracks.length} tracks · ${new Date(s.createdAt).toLocaleDateString()}</span><button data-export="${esc(s.sessionId)}">CSV ↓</button></div>`).join('')}</div>`:'<div class="queue-empty">No past cookie nights yet.</div>';
+  window.__cookieArchives=new Map(list.map(s=>[s.sessionId,s]));
+}
+async function finishNight() {
+  await mutate(s=>{
+    if(['spinning','voting'].includes(s.phase))throw Error('Close the current round before finishing the evening.');
+    if(s.phase==='finished')throw Error('This evening is already finished.');
+    s.phase='finished';s.currentId='';s.submissionsOpen=false;s.lastClosedId='';
+  });
+}
+async function makeNewNight() {
+  const suggested=`Cookie Playback · ${new Date().toLocaleDateString()}`;
+  const name=$('newNightName').value.trim().slice(0,80)||suggested;
+  const previous=night?.sessionId && night.sessionId!=='not-created'
+    ?{id:night.sessionId,title:night.title,submissions:submissions.filter(s=>s.sessionId===night.sessionId),notes:notes.filter(n=>n.sessionId===night.sessionId)}:null;
+  if(previous) {
+    await setDoc(doc(db,'archives',previous.id),{sessionId:previous.id,title:previous.title,createdAt:Date.now(),tracks:enriched().board});
+  }
+  await saveNight({...initialNight(),title:name,wheelTheme:themeKey(night?.wheelTheme)});
+  $('newNightName').value='';
+  if(previous) {
+    // Old submissions never show again (they are keyed by session); delete them so the collection stays small.
+    const results=await Promise.allSettled([
+      ...previous.submissions.flatMap(s=>[submissionsRef,detailsRef].map(ref=>deleteDoc(doc(ref,`${previous.id}_${s.userId}`)))),
+      ...previous.notes.map(n=>deleteDoc(doc(notesRef,`${previous.id}_${n.trackId}`)))]);
+    if(results.some(r=>r.status==='rejected'))toast('Some old submissions could not be deleted. They are harmless and hidden.',true);
+  }
+  await refreshArchive();
+}
+// MozartAI links: the mozartLookup function returns cover art and audio. Its links expire after a few
+// hours, so answers are kept for half an hour per page and never stored.
+const MOZART_LINK=/^https:\/\/(www\.)?mozartai\.com\/(s|song)\/[A-Za-z0-9-]{6,64}\/?(\?.*)?$/;
+const mozartCache=new Map();
+function mozartInfo(url) {
+  if(!functions || !MOZART_LINK.test(url||''))return Promise.resolve(null);
+  const hit=mozartCache.get(url);
+  if(hit && hit.until>Date.now())return hit.info;
+  const info=httpsCallable(functions,'mozartLookup')({url}).then(r=>r.data)
+    .catch(()=>{mozartCache.delete(url);return null;});
+  mozartCache.set(url,{info,until:Date.now()+30*60*1000});
+  return info;
+}
+// While a song plays, its MozartAI cover turns on the record like a picture-disc LP.
+// Hosts also get a player to play the song into the Discord call.
+function showLiveMedia(t) {
+  const art=$('recordArt'), img=$('songCover'), audio=$('liveAudio');
+  art.classList.remove('has-cover'); img.hidden=true; img.removeAttribute('src');
+  audio.pause?.(); audio.removeAttribute('src'); $('hostPlayer').hidden=true; liveDuration=0;
+  mozartInfo(t.url).then(info=>{
+    if(!info || activeTrackId!==t.id)return;
+    liveDuration=info.duration||0;
+    if(isHost() && info.audio) {
+      audio.src=info.audio; $('hostPlayer').hidden=false;
+      $('liveLength').textContent=liveDuration?`Song length ${clock(liveDuration)}`:'';
+    }
+    if(!info.cover)return;
+    img.onload=()=>{ if(activeTrackId===t.id){img.hidden=false;art.classList.add('has-cover');} };
+    img.src=info.cover;
+  });
+}
+// Host pre-listening: play or open any song ahead of time and keep notes all hosts share.
+function renderTeam() {
+  const owner=isOwner();
+  const rows=[...HOST_UIDS.map(id=>({id,name:OWNER_NAMES[id]||id,owner:true})),
+    ...coHosts.ids.map(id=>({id,name:coHosts.names?.[id]||id,owner:false}))];
+  $('teamList').innerHTML=rows.map(r=>`<div class="team-row"><span>${r.owner?'👑':'🎧'} <b>${esc(r.name)}</b> · ${r.owner?'owner':'co-host'}</span>${!r.owner && owner?`<button class="queue-remove" type="button" data-cohost="${esc(r.id)}" aria-label="Remove ${esc(r.name)} as co-host">×</button>`:''}</div>`).join('');
+  $('teamForm').hidden=!owner;
+  $('teamNote').textContent=owner?'':`Only the owners (${HOST_UIDS.map(id=>OWNER_NAMES[id]||id).join(', ')}) can change this list.`;
+}
+async function saveCoHosts(ids,names) {
+  if(!isOwner())throw Error('Only the owners can change the co-hosts.');
+  await setDoc(hostsRef,{ids,names,updatedBy:myName});
+}
+function applyHostRole() {
+  const host=isHost();
+  $('hostToggle').hidden=!host;
+  if(host===hostRoleWas)return;
+  hostRoleWas=host; hostVisible=host && !STAGE_VIEW; $('hostPanel').hidden=!hostVisible;
+  if(hostVisible) refreshArchive().catch(e=>toast(e.message,true));
+  // Hosts may read every song and the notes: listen again with the new rights.
+  if(night && votesSession){votesSession='';subscribeVotes(night.sessionId);}
+  if(night)render();
+}
+function suggestedHostTab() {
+  if(night.sessionId==='not-created' || night.phase==='finished')return 'wrap';
+  return night.phase==='ready'?'prepare':'live';
+}
+function showHostTab(tab) {
+  hostTab=tab;
+  for(const [key,id] of [['prepare','Prepare'],['live','Live'],['wrap','Wrap']]) {
+    $(`hostTab${id}`).setAttribute('aria-selected',String(key===tab));
+    $(`hostPane${id}`).hidden=key!==tab;
+  }
+}
+function noteOf(trackId) { return notes.find(n=>n.sessionId===night?.sessionId && n.trackId===trackId); }
+function openPrelisten(id) {
+  prelistenId=id; noteDirty=false; renderPrelisten(true);
+  $('prelistenCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderPrelisten(fresh=false) {
+  const t=prelistenId?allTracks().find(x=>x.id===prelistenId):null;
+  $('prelistenCard').hidden=!t;
+  if(!t){ $('prelistenAudio').pause?.(); return; }
+  $('prelistenTitle').textContent=t.title||'Untitled';
+  $('prelistenMeta').textContent=[t.creator||'Host pick',t.genre,t.status==='queued'?'':t.status.toUpperCase()].filter(Boolean).join(' · ');
+  $('prelistenComment').hidden=!t.comment; $('prelistenComment').textContent=t.comment?`“${t.comment}”`:'';
+  const url=safeUrl(t.url), note=noteOf(t.id);
+  $('prelistenLink').hidden=!url; if(url)$('prelistenLink').href=url; else $('prelistenLink').removeAttribute('href');
+  if(!noteDirty) $('noteText').value=note?.text||'';
+  $('noteMeta').textContent=note?`Saved by ${note.editedBy}`:'No note yet';
+  $('playNowButton').hidden=!(t.status==='queued' && ['ready','between'].includes(night.phase));
+  if(!fresh)return;
+  const audio=$('prelistenAudio');
+  audio.pause?.(); audio.hidden=true; audio.removeAttribute('src'); $('prelistenCover').hidden=true;
+  const mozart=MOZART_LINK.test(t.url||'');
+  $('prelistenStatus').textContent=mozart?'Fetching the song from MozartAI…':url?'Open the link to listen.':'This song has no link.';
+  if(!mozart)return;
+  mozartInfo(t.url).then(info=>{
+    if(prelistenId!==t.id)return;
+    if(!info){$('prelistenStatus').textContent='MozartAI did not answer. Open the link to listen.';return;}
+    if(info.audio){audio.src=info.audio;audio.hidden=false;}
+    if(info.cover){$('prelistenCoverImg').src=info.cover;$('prelistenCover').hidden=false;}
+    $('prelistenStatus').textContent=info.audio?'':'MozartAI has no audio for this song. Open the link to listen.';
+  });
+}
+async function saveNote() {
+  if(!isHost() || !prelistenId)return;
+  const trackId=prelistenId, text=$('noteText').value.trim(), id=`${night.sessionId}_${trackId}`;
+  await guarded(async()=>{
+    if(text.length>2000)throw Error('Keep the note under 2000 characters.');
+    if(!text) await deleteDoc(doc(notesRef,id));
+    else await setDoc(doc(notesRef,id),{sessionId:night.sessionId,trackId,text,editedBy:myName,editedById:authUser.uid,updatedAt:Date.now()});
+    noteDirty=false;
+  },text?'Note saved for all hosts.':'Note removed.');
+}
+// Discord login: the browser visits Discord, comes back with a one-time code, and the discordLogin
+// function trades it for a Firebase session if the account is a member of our server.
+const LOGIN_STATE_KEY='cookie_login_state';
+function loginRedirectUri() { return location.origin+location.pathname; }
+function startDiscordLogin() {
+  const state=crypto.randomUUID(); session.put(LOGIN_STATE_KEY,state);
+  const url=new URL('https://discord.com/oauth2/authorize');
+  url.search=new URLSearchParams({client_id:DISCORD_CLIENT_ID,response_type:'code',redirect_uri:loginRedirectUri(),scope:'identify guilds.members.read',state,prompt:'none'}).toString();
+  location.assign(url.href);
+}
+async function finishDiscordLogin() {
+  const params=new URLSearchParams(location.search), code=params.get('code');
+  if(!code && !params.get('error'))return;
+  // A reload or a copied link must never carry the one-time code.
+  history.replaceState(null,'',loginRedirectUri()+location.hash);
+  const expected=session.get(LOGIN_STATE_KEY); session.drop(LOGIN_STATE_KEY);
+  if(!code)throw Error('Discord login was cancelled. Try again whenever you are ready.');
+  if(!expected || params.get('state')!==expected)throw Error('That login took a wrong turn. Please log in again.');
+  loginPending=true; showGate('Checking your Discord membership…',true);
+  try {
+    const {data}=await httpsCallable(functions,'discordLogin')({code,redirectUri:loginRedirectUri()});
+    await signInWithCustomToken(auth,data.token);
+  } finally { loginPending=false; }
+}
+function showGate(message,busy=false,error=false) {
+  $('loginGate').hidden=false; $('app').hidden=true;
+  $('discordLogin').hidden=busy; $('loginStatus').textContent=message;
+  $('loginStatus').className=error?'login-status error':'login-status';
+}
+async function onAuthChange(user) {
+  unsubNight(); unsubVotes(); unsubSubmissions(); unsubDetails(); unsubNotes(); unsubHosts(); votesSession=''; prelistenId=''; coHosts={ids:[],names:{}};
+  const claims=user?(await user.getIdTokenResult()).claims:{};
+  if(!user || claims.member!==true) {
+    // Sessions left over from the anonymous and email sign-in of earlier versions do not count.
+    if(user) {await signOut(auth);return;}
+    authUser=null; myName=''; hostVisible=false;
+    if(!loginPending) showGate(configured?'':'Setup needed: add the Discord client id and the host ids to this page, then deploy.');
+    $('discordLogin').disabled=!configured;
+    return;
+  }
+  authUser=user; myName=claims.discordName||'';
+  $('loginGate').hidden=true; $('app').hidden=false;
+  $('userName').textContent=myName; hostRoleWas=null; applyHostRole();
+  unsubHosts=onSnapshot(hostsRef,snap=>{coHosts={ids:[],names:{},...(snap.exists()?snap.data():{})};applyHostRole();},
+    e=>toast('Co-host list: '+e.message,true));
+  unsubNight=onSnapshot(eventRef,onEventUpdate,e=>toast('Event sync failed: '+e.message,true));
+}
+function attachListeners() {
+  cookieWheel=new CookieWheel($('wheelCanvas'),()=>syncCookieWheel());
+  cookieWheel.draw([]);
+  $('ratingSlider').addEventListener('input',e=>{setSlider(e.target.value);dirtyVote=true;});
+  $('submitVote').addEventListener('click',vote);
+  $('discordLogin').addEventListener('click',startDiscordLogin);
+  $('logoutButton').addEventListener('click',()=>signOut(auth));
+  $('hostToggle').addEventListener('click',async()=>{
+    if(!isHost())return;
+    if(!hostVisible){hostVisible=true;$('hostPanel').hidden=false;render();await refreshArchive();}
+    $('hostPanel').scrollIntoView({behavior:'smooth'});
+  });
+  $('hostLogout').addEventListener('click',()=>{hostVisible=false;$('hostPanel').hidden=true;$('prelistenAudio').pause?.();});
+  $('wheelTheme').innerHTML=Object.entries(WHEEL_THEMES).map(([key,t])=>`<option value="${key}">${t.emoji} ${esc(t.label)}</option>`).join('');
+  $('wheelTheme').addEventListener('change',e=>guarded(()=>mutate(s=>{s.wheelTheme=themeKey(e.target.value);}),'Wheel look changed for everyone.'));
+  $('prelistenClose').addEventListener('click',()=>{prelistenId='';renderPrelisten();});
+  for(const id of ['hostTabPrepare','hostTabLive','hostTabWrap']) $(id).addEventListener('click',e=>showHostTab(e.currentTarget.dataset.tab));
+  $('hostSpin').addEventListener('click',spin);
+  $('putBackButton').addEventListener('click',()=>{
+    if(!confirm(`Skip “${current()?.title||'this song'}” and put it back in the jar? Its votes so far are removed.`))return;
+    guarded(putBackInJar,'The song is back in the jar.');
+  });
+  $('reopenButton').addEventListener('click',()=>guarded(reopenVoting,'Voting is open again.'));
+  $('playNowButton').addEventListener('click',async()=>{
+    const t=allTracks().find(x=>x.id===prelistenId); if(!t)return;
+    if(!confirm(`Play “${t.title||'this song'}” now, without a spin?`))return;
+    if(await guarded(()=>playNow(t.id),`Now playing: ${t.title||'the chosen song'}`)) $('livePanel').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  $('bannerShow').addEventListener('click',()=>{
+    const text=$('bannerInput').value.trim().slice(0,140);
+    if(!text){toast('Type a message first.',true);return;}
+    guarded(()=>mutate(s=>{s.banner=text;}),'Message shown to everyone.');
+  });
+  $('bannerClear').addEventListener('click',()=>{ $('bannerInput').value=''; guarded(()=>mutate(s=>{s.banner='';}),'Message removed.'); });
+  $('openStage').addEventListener('click',()=>window.open(`${loginRedirectUri()}?view=stage`,'cookie-stage','popup,width=1280,height=760'));
+  $('teamForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const id=$('teamId').value.trim(), name=$('teamName').value.trim().slice(0,32);
+    const ok=await guarded(async()=>{
+      if(!/^\d{17,20}$/.test(id))throw Error('A Discord user id is a number with 17 to 20 digits (Developer Mode → right-click → Copy User ID).');
+      if(HOST_UIDS.includes(id) || coHosts.ids.includes(id))throw Error('This person is already a host.');
+      if(coHosts.ids.length>=20)throw Error('There can be up to 20 co-hosts.');
+      await saveCoHosts([...coHosts.ids,id],{...coHosts.names,[id]:name||'Co-host'});
+    },`${name||'The new co-host'} can host right away.`);
+    if(ok){$('teamId').value='';$('teamName').value='';}
+  });
+  $('teamList').addEventListener('click',e=>{
+    const id=e.target.closest('[data-cohost]')?.dataset.cohost; if(!id)return;
+    const name=coHosts.names?.[id]||id;
+    if(!confirm(`Remove ${name} as co-host?`))return;
+    const names={...coHosts.names}; delete names[id];
+    guarded(()=>saveCoHosts(coHosts.ids.filter(x=>x!==id),names),`${name} is no longer a co-host.`);
+  });
+  $('exportSongs').addEventListener('click',()=>{ if(isHost() && night) downloadCsv(songsCsv(),`${night.title.slice(0,40)}-songs`); });
+  $('noteText').addEventListener('input',()=>{noteDirty=true;});
+  $('saveNote').addEventListener('click',saveNote);
+  $('copyLink').addEventListener('click',async()=>{
+    const url=new URL(location.href);url.hash='';url.search='';
+    try{await navigator.clipboard.writeText(url.href);toast('Your invitation link is copied!');}
+    catch{window.prompt('Copy voting link:',url.href);}
+  });
+  $('saveTitle').addEventListener('click',()=>guarded(()=>mutate(s=>{s.title=$('sessionTitle').value.trim().slice(0,80)||s.title;}),'Event title updated.'));
+  $('addTrackForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const ok=await guarded(()=>mutate(s=>s.tracks.push(validTrack($('addTitle').value.trim(),$('addCreator').value.trim(),$('addURL').value.trim()))),'Song added to the cookie jar!');
+    if(ok)$('addTrackForm').reset();
+  });
+  $('importButton').addEventListener('click',async()=>{
+    const lines=$('bulkTracks').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    if(!lines.length){toast('Paste at least one song.',true);return;}
+    const ok=await guarded(()=>mutate(s=>{
+      for(const line of lines){const [title='',creator='',...url]=line.split('|').map(v=>v.trim());s.tracks.push(validTrack(title,creator,url.join('|')));}
+      if(s.tracks.length>200)throw Error('Limit 200 tracks per event.');
+    }),`${lines.length} songs imported.`);
+    if(ok)$('bulkTracks').value='';
+  });
+  $('queueList').addEventListener('click',e=>{
+    const listen=e.target.closest('[data-listen]');if(listen){openPrelisten(listen.dataset.listen);return;}
+    const button=e.target.closest('[data-remove]');if(!button)return;
+    const track=allTracks().find(t=>t.id===button.dataset.remove);if(!track || track.status!=='queued')return;
+    if(!confirm(`Remove “${track.title}”?`))return;
+    guarded(()=>mutate(s=>{
+      if(!queuedIn(s,track.id))throw Error('This song is no longer queued.');
+      if(track.community) markStatus(s,track.id,'removed'); else s.tracks=s.tracks.filter(t=>t.id!==track.id);
+    }),'Song removed.');
+  });
+  $('spinButton').addEventListener('click',spin);
+  $('closeButton').addEventListener('click',()=>{
+    if(!confirm('Close voting for this track? Ratings will be locked.'))return;
+    guarded(closeVoting,'Voting closed. Rankings updated!');
+  });
+  $('manualWinner').addEventListener('change',()=>{$('manualPickButton').disabled=night?.phase!=='spinning'||!$('manualWinner').value;});
+  $('manualPickButton').addEventListener('click',()=>guarded(()=>setWinner($('manualWinner').value)));
+  $('downloadButton').addEventListener('click',()=>{
+    if(!night)return;exportRows(enriched().board,night.title);
+  });
+  $('finishButton').addEventListener('click',()=>{
+    if(!confirm('Finish the evening now? Everyone will see the final rankings and submissions will close.'))return;
+    guarded(finishNight,'The evening is finished. Final rankings are up!');
+  });
+  $('newNightButton').addEventListener('click',()=>{
+    const name=$('newNightName').value.trim()||'a new evening';
+    if(night?.sessionId!=='not-created' && !confirm(`Archive “${night.title}” and start ${name}? Every song and submission will be cleared.`))return;
+    guarded(makeNewNight,'Fresh evening ready. Submissions are open.');
+  });
+  $('historyRows').addEventListener('click',e=>{
+    const key=e.target.closest('[data-export]')?.dataset.export;
+    const s=window.__cookieArchives?.get(key);if(s)exportRows(s.tracks,s.title);
+  });
+  $('submitForm').addEventListener('submit',submitSong);
+  for(const id of ['submitTitle','submitURL','submitGenre','submitComment']) $(id).addEventListener('input',()=>{submitDirty=true;});
+  $('withdrawButton').addEventListener('click',withdrawSong);
+  $('toggleSubmissions').addEventListener('click',async()=>{
+    const open=night.submissionsOpen!==true;
+    await guarded(()=>mutate(s=>{s.submissionsOpen=open;}),open?'Community submissions are open.':'Community submissions are paused.');
+  });
+  setSlider(7.5);
+}
+async function start() {
+  attachListeners();
+  if(STAGE_VIEW) document.body.classList.add('stage-view');
+  if(!configured) {onAuthChange(null);return;}
+  let config;
+  try { const r=await fetch(FIREBASE_INIT); if(!r.ok)throw Error(r.statusText); config=await r.json(); }
+  catch { showGate('Open this page from its Firebase site, for example https://cookie-sessions.web.app.',false,true); $('discordLogin').disabled=true; return; }
+  try {
+    const app=initializeApp(config);auth=getAuth(app);db=getFirestore(app);functions=getFunctions(app,LOGIN_REGION);
+    eventRef=doc(db,'events','main');votesRef=collection(db,'events','main','votes');submissionsRef=collection(db,'events','main','submissions');detailsRef=collection(db,'events','main','songDetails');notesRef=collection(db,'events','main','hostNotes');hostsRef=doc(db,'config','hosts');
+    // Signing in or out changes what this page may read, so every listener restarts.
+    onAuthStateChanged(auth,user=>onAuthChange(user).catch(e=>showGate(e.message||String(e),false,true)));
+    finishDiscordLogin().catch(e=>showGate(e.message||String(e),false,true));
+  } catch(e) {showGate('Firebase initialization failed: '+e.message,false,true);}
+}
+start();
+
+</script>
+</body>
+</html>

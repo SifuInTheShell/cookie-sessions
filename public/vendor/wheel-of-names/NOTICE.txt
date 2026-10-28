@@ -1,0 +1,6 @@
+Wheel of Names canvas renderer
+Copyright 2020 Google LLC
+Apache License 2.0 (see LICENSE)
+Source: https://github.com/momander/wheel-spinner
+Commit: 003c97439592901a405c3d3495295cef5eea1755
+Modified 2026-10-14 for Cookie Sessions: browser ES modules, subset of utilities, removed unused asset/polyfill/color-extraction imports.

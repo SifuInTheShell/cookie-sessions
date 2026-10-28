@@ -1,0 +1,164 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // SETUP: owners are listed by Discord user id. Keep this list identical to HOST_UIDS in public/index.html.
+    function isOwner() {
+      return isSignedIn() && request.auth.uid in [
+        '810808889116459019', // Callandra
+        '1505891427920379934' // yanti
+        // Add a comma after the previous id, then add the next host's Discord user id here.
+      ];
+    }
+    // Hosts are the owners plus the co-hosts an owner added in the app (config/hosts).
+    function isHost() {
+      return isOwner() || (isSignedIn()
+        && exists(/databases/$(database)/documents/config/hosts)
+        && request.auth.uid in get(/databases/$(database)/documents/config/hosts).data.ids);
+    }
+    // Signed in through the Discord login function, which only admits members of our Discord server.
+    // Its uid is the Discord user id and its discordName claim is the member's name on the server.
+    function isSignedIn() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'custom'
+        && request.auth.token.member == true;
+    }
+    function currentNight() {
+      return get(/databases/$(database)/documents/events/main).data;
+    }
+    match /events/main {
+      allow read: if isSignedIn();
+      allow create, update: if isHost();
+      allow delete: if false;
+
+      match /votes/{voteId} {
+        // Scores are readable by event participants so each browser can compute
+        // the live leaderboard. Don't store secrets here.
+        allow read: if isSignedIn();
+        function validBallot() {
+          let v = request.resource.data;
+          let n = currentNight();
+          return isSignedIn()
+            && v.keys().hasOnly(['sessionId','trackId','userId','scoreHalf','nickname','updatedAt'])
+            && v.keys().hasAll(['sessionId','trackId','userId','scoreHalf','nickname','updatedAt'])
+            && v.userId == request.auth.uid
+            && v.sessionId == n.sessionId
+            && v.trackId == n.currentId
+            && n.phase == 'voting'
+            // Nobody rates their own community submission (its track id is derived from their uid).
+            && v.trackId != 'sub_' + request.auth.uid
+            && voteId == v.sessionId + '_' + v.trackId + '_' + request.auth.uid
+            && v.scoreHalf is int && v.scoreHalf >= 0 && v.scoreHalf <= 20
+            && v.nickname == request.auth.token.discordName && v.nickname is string && v.nickname.size() > 0 && v.nickname.size() <= 32
+            && v.updatedAt is timestamp;
+        }
+        allow create: if validBallot();
+        allow update: if validBallot()
+          && resource.data.userId == request.auth.uid
+          && resource.data.sessionId == request.resource.data.sessionId
+          && resource.data.trackId == request.resource.data.trackId;
+        // Hosts clear the votes of a song they put back in the jar.
+        allow delete: if isHost();
+      }
+
+      match /submissions/{submissionId} {
+        // One community song per signed-in account and evening. Hosts mark a song as
+        // live/closed/removed in events/main.trackStatus; the submission itself stays put.
+        // This public half says only WHO submitted. The song itself is in songDetails below
+        // and becomes public when a host plays it (copied into events/main.revealed).
+        allow read: if isSignedIn();
+        function validSubmission() {
+          let s = request.resource.data;
+          let n = currentNight();
+          return isSignedIn()
+            && s.keys().hasOnly(['sessionId','userId','trackId','nickname','createdAt','updatedAt'])
+            && s.keys().hasAll(['sessionId','userId','trackId','nickname','createdAt','updatedAt'])
+            && s.userId == request.auth.uid
+            && s.trackId == 'sub_' + request.auth.uid
+            && s.sessionId == n.sessionId
+            && submissionId == s.sessionId + '_' + request.auth.uid
+            && n.get('submissionsOpen', false) == true
+            && n.phase != 'finished'
+            && !(s.trackId in n.get('trackStatus', {}))
+            && s.nickname == request.auth.token.discordName && s.nickname is string && s.nickname.size() > 0 && s.nickname.size() <= 32
+            && s.createdAt is number && s.updatedAt is number
+            && existsAfter(/databases/$(database)/documents/events/main/songDetails/$(submissionId));
+        }
+        allow create: if validSubmission();
+        allow update: if validSubmission()
+          && resource.data.userId == request.auth.uid
+          && resource.data.sessionId == request.resource.data.sessionId
+          && request.resource.data.createdAt == resource.data.createdAt;
+        // Owners may withdraw while the song is still queued and no spin is in progress; hosts may always delete.
+        allow delete: if isHost()
+          || (isSignedIn()
+            && resource.data.userId == request.auth.uid
+            && currentNight().phase != 'spinning'
+            && !(resource.data.trackId in currentNight().get('trackStatus', {})));
+      }
+
+      match /hostNotes/{noteId} {
+        // Pre-listening notes, one per song and evening, shared by all hosts and hidden from everyone else.
+        allow read, delete: if isHost();
+        allow create, update: if isHost()
+          && request.resource.data.keys().hasOnly(['sessionId','trackId','text','editedBy','editedById','updatedAt'])
+          && request.resource.data.keys().hasAll(['sessionId','trackId','text','editedBy','editedById','updatedAt'])
+          && request.resource.data.sessionId == currentNight().sessionId
+          && noteId == request.resource.data.sessionId + '_' + request.resource.data.trackId
+          && request.resource.data.trackId is string && request.resource.data.trackId.size() <= 80
+          && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 2000
+          && request.resource.data.editedById == request.auth.uid
+          && request.resource.data.editedBy == request.auth.token.discordName
+          && request.resource.data.updatedAt is number;
+      }
+
+      match /songDetails/{submissionId} {
+        // Title, link, genre and comment of a community song: only its submitter and the hosts
+        // may read them, so everyone else hears the song fresh when the wheel picks it.
+        allow read: if isHost() || (isSignedIn() && resource.data.userId == request.auth.uid);
+        function validDetails() {
+          let s = request.resource.data;
+          let n = currentNight();
+          return isSignedIn()
+            && s.keys().hasOnly(['sessionId','userId','trackId','title','url','genre','comment'])
+            && s.keys().hasAll(['sessionId','userId','trackId','title','url','genre','comment'])
+            && s.userId == request.auth.uid
+            && s.trackId == 'sub_' + request.auth.uid
+            && s.sessionId == n.sessionId
+            && submissionId == s.sessionId + '_' + request.auth.uid
+            && n.get('submissionsOpen', false) == true
+            && n.phase != 'finished'
+            && !(s.trackId in n.get('trackStatus', {}))
+            && s.title is string && s.title.size() > 0 && s.title.size() <= 100
+            && s.url is string && s.url.size() <= 500 && s.url.matches('https://.*')
+            && s.genre is string && s.genre.size() <= 30
+            && s.comment is string && s.comment.size() <= 200;
+        }
+        allow create: if validDetails();
+        allow update: if validDetails()
+          && resource.data.userId == request.auth.uid
+          && resource.data.sessionId == request.resource.data.sessionId;
+        allow delete: if isHost()
+          || (isSignedIn()
+            && resource.data.userId == request.auth.uid
+            && currentNight().phase != 'spinning'
+            && !(resource.data.trackId in currentNight().get('trackStatus', {})));
+      }
+    }
+    match /config/hosts {
+      // The co-host list: readable by members so each page knows who hosts; only owners change it.
+      allow read: if isSignedIn();
+      allow create, update: if isOwner()
+        && request.resource.data.keys().hasOnly(['ids','names','updatedBy'])
+        && request.resource.data.ids is list && request.resource.data.ids.size() <= 20
+        && request.resource.data.names is map && request.resource.data.names.size() <= 20
+        && request.resource.data.updatedBy == request.auth.token.discordName;
+      allow delete: if isOwner();
+    }
+    match /archives/{archiveId} {
+      allow read: if isSignedIn();
+      allow create: if isHost() && archiveId == request.resource.data.sessionId;
+      allow update, delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

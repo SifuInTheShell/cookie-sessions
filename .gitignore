@@ -1,0 +1,24 @@
+# Firebase local caches and logs
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Dependencies and local environment secrets
+node_modules/
+.env
+.env.*
+.secret.local
+!.env.example
+*serviceAccount*.json
+*service-account*.json
+
+# Generated deployment archive and local handoff notes
+/cookie-sessions-deploy.zip
+/continue.md
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

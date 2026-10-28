@@ -1,0 +1,50 @@
+/*
+Copyright 2020 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+// Cookie Sessions adaptation (2026-10-14): native ES modules; unused bundled imports removed.
+
+export default class ImageCache {
+
+  constructor() {
+    this.images = new Object();
+    this.emptyImage = new Image();
+    // This dataUrl is a 1x1 transparent image.
+    this.emptyImage.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+  }
+
+  addImage(imageName) {
+    this.images[imageName] = new Image();
+    this.images[imageName].src = imageName;
+  }
+
+  getImage(imageName) {
+    if (!imageName) return;
+    if (imageName in this.images) {
+      // Do nothing.
+    }
+    else {
+      if (imageName) this.addImage(imageName);
+    }
+    if (this.images[imageName] && this.images[imageName].naturalHeight > 0) {
+      return this.images[imageName];
+    }
+    else {
+      // If the image is broken, return an empty image instead,
+      // to prevent Javascript errors when attempting to draw it.
+      return this.emptyImage;
+    }
+  };
+
+}
